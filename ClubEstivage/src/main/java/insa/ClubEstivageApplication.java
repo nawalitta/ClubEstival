@@ -5,14 +5,17 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import insa.dao.ClientRepository ;
-import insa.entities.Client; 
+import insa.dao.HebergementRepository;
+import insa.entities.Client;
+import insa.entities.Hebergement; 
 
 @SpringBootApplication
 public class ClubEstivageApplication implements CommandLineRunner {
 
 	@Autowired
 	private ClientRepository  clientRepository ;
-	
+	@Autowired
+	private HebergementRepository hebergementRepository;
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ClubEstivageApplication.class, args);
@@ -29,6 +32,16 @@ public class ClubEstivageApplication implements CommandLineRunner {
 			System.out.println(c.getNomClient());
 
 		});
+		
+		
+	hebergementRepository.save(new Hebergement("typeHebergement","nomHebergement","description","emplacement","disponible","fff", 2000));
+		
+	hebergementRepository.save(new Hebergement("typeHebergement","nomHebergement","description","emplacement","disponible","fff", 3000));
+		hebergementRepository.findAll().forEach(h->{
+			System.out.println(h.getNomHebergement());
+
+		}); 
+		
 		
 
 	}
