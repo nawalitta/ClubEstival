@@ -1,3 +1,4 @@
+
 package insa.entities;
 
 import java.io.Serializable;
@@ -143,7 +144,7 @@ public class Hebergement implements Serializable {
 	@Override
 	public String toString() {
 		
-		return description+ typeHebergement + idHebergement + "Achahbar";
+		return description+ typeHebergement + idHebergement + "insa";
 	}
 
 }

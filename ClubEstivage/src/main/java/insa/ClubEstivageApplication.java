@@ -4,10 +4,14 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
+
 import insa.dao.ClientRepository ;
 import insa.dao.HebergementRepository;
 import insa.entities.Client;
 import insa.entities.Hebergement; 
+import insa.dao.RoleRepository;
+import insa.entities.Client;
+import insa.entities.Role; 
 
 @SpringBootApplication
 public class ClubEstivageApplication implements CommandLineRunner {
@@ -16,6 +20,8 @@ public class ClubEstivageApplication implements CommandLineRunner {
 	private ClientRepository  clientRepository ;
 	@Autowired
 	private HebergementRepository hebergementRepository;
+	private RoleRepository  roleRepository ;
+	
 	
 	public static void main(String[] args) {
 		SpringApplication.run(ClubEstivageApplication.class, args);
@@ -33,6 +39,7 @@ public class ClubEstivageApplication implements CommandLineRunner {
 
 		});
 		
+
 		
 	hebergementRepository.save(new Hebergement("typeHebergement","nomHebergement","description","emplacement","disponible","fff", 2000));
 		
@@ -42,6 +49,12 @@ public class ClubEstivageApplication implements CommandLineRunner {
 
 		}); 
 		
+	/*	roleRepository.save(new Role ( "admin"));
+		roleRepository.save(new Role ( "client"));
+		roleRepository.findAll().forEach(r->{
+			System.out.println(r.getNomRole());
+
+		});*/
 		
 
 	}

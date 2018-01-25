@@ -1,3 +1,4 @@
+
 package insa.entities;
 
 import java.io.Serializable;
@@ -20,17 +21,17 @@ public class Reservation implements Serializable {
 	private int nbrSemaine;
 	private double total;
 	private String typePaiement;
-	/*@OneToMany(mappedBy = "reservation")
-	private Collection<Versement> versements;*/
+	@OneToMany(mappedBy = "reservation")
+	private Collection<Versement> versements;
 	@ManyToOne
 	@JoinColumn(name = "idHebergement")
 	private Hebergement hebergement;
-	/*@ManyToOne
+	@ManyToOne
 	@JoinColumn(name = "idRestauration")
 	private Restauration restauration;
 	@ManyToOne
 	@JoinColumn(name = "idSemaine")
-	private Semaine semaine; */
+	private Semaine semaine;
 	@ManyToOne
 	@JoinColumn(name = "idClient")
 	private Client client;
@@ -91,13 +92,13 @@ public class Reservation implements Serializable {
 		this.nbrSemaine = nbrSemaine;
 	}
 
-	/*public Collection<Versement> getVersements() {
+	public Collection<Versement> getVersements() {
 		return versements;
 	}
 
 	public void setVersements(Collection<Versement> versements) {
 		this.versements = versements;
-	}*/
+	}
 
 	public Hebergement getHebergement() {
 		return hebergement;
@@ -107,7 +108,7 @@ public class Reservation implements Serializable {
 		this.hebergement = hebergement;
 	}
 
-	/*public Restauration getRestauration() {
+	public Restauration getRestauration() {
 		return restauration;
 	}
 
@@ -121,7 +122,7 @@ public class Reservation implements Serializable {
 
 	public void setSemaine(Semaine semaine) {
 		this.semaine = semaine;
-	}*/
+	}
 
 	public Reservation() {
 		super();
