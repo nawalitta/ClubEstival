@@ -17,6 +17,7 @@ export class ClientsComponent implements OnInit {
   pageClients:any;
 
   motCle:string="";
+  typeHebergement:string="";
   currentPage:number=0;
   size:number=5;
   pages:Array<number>;
@@ -24,16 +25,17 @@ export class ClientsComponent implements OnInit {
   constructor(public http:Http, public clientsservice: ClientsService ) { }
 
   ngOnInit() {
-  	
+
   	
   }
+  
 
   doSearch(){
 
   	this.clientsservice.getClients(this.motCle, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
-			this.pages=new Array(data.totalPages);
+
 		},err=> {
 		     console.log(err);
 		});
@@ -46,6 +48,20 @@ export class ClientsComponent implements OnInit {
   	this.doSearch();
 
   }
+
+  chercherClientByTypeHebergement(){
+  	this.clientsservice.getClientsByTypeHebergement(this.typeHebergement, this.currentPage, this.size)
+		.subscribe(data=>{
+			this.pageClients=data;
+
+		},err=> {
+		     console.log(err);
+		});
+
+
+  }
+
+  
 
   gotoPage(i:number){
   	this.currentPage=i;

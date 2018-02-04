@@ -1,0 +1,54 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Liste des hebergements </div>
+		<div class="panel-body">
+			  <div class="form-group row">
+			    <label for="staticID" class="col-sm-2 col-form-label"> Nom</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control-plaintext" [(ngModel)]="motCle" />
+			      <button class="btn btn-primary" (click)="chercherHebergement()">Chercher</button>
+			    </div>
+
+			  </div>
+			  
+			<table class="table table-striped ">
+				<tr>
+					<th>ID</th>
+					<th>NOM</th>
+					<th>Type </th>
+					<th>Description</th>
+					<th>Tarif  </th>
+					<th>Emplacement </th>
+					<th>Disponibilite  </th>
+					<th>---------------</th>
+				</tr>
+				<tr *ngFor="let c of pageClients?.content">
+					<td>{{c.idHebergement}}</td>
+					<td>{{c.nomHebergement}}</td>
+					<td>{{c.typeHebergement}}</td>
+					<td>{{c.description}}</td>
+					<td>{{c.tarifHebergement}}</td>
+					<td>{{c.emplacement}}</td>
+					<td>{{c.disponibilite}}</td>
+					<td><button class="btn btn-primary" routerLink="/new-reservation/{{c.idHebergement}}" >Réserver</button></td>
+				</tr>
+			</table>
+			<div class="container">
+				<ul class="nav nav-pills">
+					<li  [ngClass]="{'active' :currentPage ==(i)}"  *ngFor = "let p of pages; let i=index" >
+
+						<a (click)="gotoPage(i)" class="clickable" >{{i}}</a>
+
+				    </li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+</div>

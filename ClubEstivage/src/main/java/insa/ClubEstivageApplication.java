@@ -7,11 +7,12 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import insa.dao.ClientRepository ;
 import insa.dao.HebergementRepository;
-import insa.entities.Client;
-import insa.entities.Hebergement; 
+import insa.dao.ReservationRepository;
+import insa.dao.RestaurationRepository;
 import insa.dao.RoleRepository;
 import insa.entities.Client;
-import insa.entities.Role; 
+import insa.entities.Hebergement;
+import insa.entities.Restauration; 
 
 @SpringBootApplication
 public class ClubEstivageApplication implements CommandLineRunner {
@@ -20,7 +21,12 @@ public class ClubEstivageApplication implements CommandLineRunner {
 	private ClientRepository  clientRepository ;
 	@Autowired
 	private HebergementRepository hebergementRepository;
+	@Autowired
+	private ReservationRepository reservationRepository;
+	@Autowired
 	private RoleRepository  roleRepository ;
+	@Autowired
+	private 	RestaurationRepository restaurationRepository;
 	
 	
 	public static void main(String[] args) {
@@ -29,21 +35,18 @@ public class ClubEstivageApplication implements CommandLineRunner {
 
 	@Override
 	public void run(String... arg0) throws Exception {
-	
-		clientRepository.save(new Client ( "nomClient1",  "adresse", " email", "tel"));
-		clientRepository.save(new Client ( "nomClient2",  "adresse", " email", "tel"));
-		clientRepository.save(new Client ( "nomClient3",  "adresse", " email", "tel"));
-		clientRepository.save(new Client ( "nomClient4",  "adresse", " email", "tel"));
+	    Client client=new Client ( "nomClient1",  "adresse", " email", "tel");
+		//clientRepository.save(client);
 		clientRepository.findAll().forEach(c->{
 			System.out.println(c.getNomClient());
 
 		});
-		
+		//Hebergement hebergement=new Hebergement("typesafae","nomHebergement","description","emplacement","disponible","fff", 3000);
+	       //hebergementRepository.save(hebergement);
 
-		
-	hebergementRepository.save(new Hebergement("typeHebergement","nomHebergement","description","emplacement","disponible","fff", 2000));
-		
-	hebergementRepository.save(new Hebergement("typeHebergement","nomHebergement","description","emplacement","disponible","fff", 3000));
+		//reservationRepository.save(new Reservation("nomReservation",2, 1, client, hebergement));
+		//Restauration restauration =new Restauration("typeRestauration", "nomRestauration", "typeRepas", "description" ,"nomPhoto",  70);
+		//restaurationRepository.save(new Restauration("typeRestauration", "nomRestauration", "typeRepas", "description" ,"nomPhoto",  70));
 		hebergementRepository.findAll().forEach(h->{
 			System.out.println(h.getNomHebergement());
 

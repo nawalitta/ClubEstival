@@ -21,9 +21,19 @@ export class ClientsService{
   	.map(resp=> resp.json());
 
  }
-}
+
+ getClientsByTypeHebergement(typeHebergement:string, page:number , size:number){
+ 	return this.http.get("http://localhost:1994/clientsbyHebergement?typeHebergement="+typeHebergement+"&size="+size+"&page="+page+"")
+  	.map(resp=> resp.json());
+
+ }
+}    
 	
   
+
+
+
+
 
 
 

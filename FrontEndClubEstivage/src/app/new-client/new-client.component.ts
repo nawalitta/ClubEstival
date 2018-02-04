@@ -11,7 +11,7 @@ import { ClientsService } from 'services/clients.service';
 export class NewClientComponent implements OnInit {
 
 	client:Client= new Client();
-	mode:number=1;
+	mode:number=1; 
 
 
   constructor(public clientsservice: ClientsService) { }
