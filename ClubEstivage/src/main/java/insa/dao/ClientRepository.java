@@ -8,9 +8,15 @@ import org.springframework.data.repository.query.Param;
 import insa.entities.Client;
 
 public interface ClientRepository extends JpaRepository<Client,Long>  {
+	
+	
 	@Query("select c from Client c where c.nomClient like:x")
 	public Page<Client> chercher(@Param("x")String mc, Pageable pageable);
 
 	
 	
+	
 }
+
+
+
