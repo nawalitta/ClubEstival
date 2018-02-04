@@ -4,11 +4,6 @@ import { ConnexionService } from 'services/connexion.service';
 import {UtilityService} from "services/utility.service";
 import {AppComponent} from "app/app.component";
 
-//import { User } from 'models/model.user';
-
-//import {AuthService} from "services/auth.service";
-//import {UtilityService} from "services/utility.service";
-
 
 @Component({
   selector: 'app-connexion',
@@ -20,7 +15,6 @@ import {AppComponent} from "app/app.component";
 
 
 export class ConnexionComponent implements OnInit {
-	    private msgs: Message[] = [];
 	   username:string ; 
      password:string ; 
      user:any ;

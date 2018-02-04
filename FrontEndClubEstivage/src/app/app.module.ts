@@ -4,10 +4,20 @@ import { NgModule } from '@angular/core';
 import { HttpModule} from '@angular/http';
 
 
+import { ClientsService } from 'services/clients.service';
+import { ProfilService } from 'services/profil.service';
+import { UserService } from 'services/user.service';
+
+
+import { ConnexionComponent } from './connexion/connexion.component';
+import { ConnexionService } from 'services/connexion.service';
+import {UtilityService} from "services/utility.service";
+
+
+
 
 import { AppComponent } from './app.component';
 import { ClientsComponent } from './clients/clients.component';
-import { ClientsService } from '/Users/mac/Documents/ClubEstival/FrontEndClubEstivage/src/services/clients.service';
 import { ReservationsService } from 'services/reservations.service';
 import { HebergementsService } from 'services/hebergements.service';
 
@@ -23,6 +33,8 @@ import { NewHebergementsComponent } from './new-hebergements/new-hebergements.co
 import { NewRestaurationsComponent } from './new-restaurations/new-restaurations.component';
 import { EditReservationComponent } from './edit-reservation/edit-reservation.component';
 import { DeleteReservationComponent } from './delete-reservation/delete-reservation.component';
+import { ProfilComponent } from './profil/profil.component';
+import { InscriptionComponent } from './inscription/inscription.component';
 
 
 const appRoutes: Routes = [
@@ -34,10 +46,15 @@ const appRoutes: Routes = [
 	{ path: 'new-hebergement', component: NewHebergementsComponent },
 	{ path: 'edit-reservation/:id', component: EditReservationComponent},
 	{ path: 'delete-reservation/:id', component: DeleteReservationComponent },
+	{ path: 'connexion', component: ConnexionComponent },
+  	{ path: 'profil', component: ProfilComponent },
+  	{ path: 'inscription', component: InscriptionComponent },
+
 	{ path: '',
-	  redirectTo: '/clients',
+	  redirectTo: '/connexion',
 	  pathMatch: 'full'
     }
+	
 
 ]
 
@@ -54,12 +71,15 @@ const appRoutes: Routes = [
     NewHebergementsComponent,
     NewRestaurationsComponent,
     EditReservationComponent,
-    DeleteReservationComponent
+    DeleteReservationComponent,
+    ConnexionComponent,
+    ProfilComponent,
+    InscriptionComponent
   ],
   imports: [
     BrowserModule,  RouterModule.forRoot(appRoutes), HttpModule,FormsModule
   ],
-  providers: [ClientsService, ReservationsService, HebergementsService],
+  providers: [ClientsService, ReservationsService, HebergementsService,ProfilService,ConnexionService,UserService,UtilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
