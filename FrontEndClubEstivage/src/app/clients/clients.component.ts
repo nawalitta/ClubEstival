@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import "rxjs/add/operator/map";
+import {UtilityService} from "services/utility.service";
 import { ClientsService } from 'services/clients.service';
 
 
@@ -20,10 +21,12 @@ export class ClientsComponent implements OnInit {
   size:number=5;
   pages:Array<number>;
 
-  constructor(public http:Http, public clientsservice: ClientsService ) { }
+  constructor(public http:Http, public clientsservice: ClientsService ,  private utility:UtilityService) { }
 
   ngOnInit() {
   	
+
+
   	
   }
 

@@ -13,10 +13,16 @@ export class ProfilService{
  constructor(public http:Http) { }
 
  GetInfoUser(){
- 
- 
 
- return this.http.get("http://localhost:1994/clients/1").map(resp=> resp.json()) ;
+  var id ;
+  			if(typeof (Storage) !== 'undefined') {
+
+           id=sessionStorage.getItem('currId') ; 
+           console.log(id);
+
+            }
+
+ return this.http.get("http://localhost:1994/clients/"+id).map(resp=> resp.json()) ;
     
 
 

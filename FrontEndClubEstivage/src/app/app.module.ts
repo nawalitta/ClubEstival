@@ -35,7 +35,7 @@ const appRoutes: Routes = [
   { path: 'inscription', component: InscriptionComponent },
 
 	{ path: '',
-	  redirectTo: '/inscription',
+	  redirectTo: '/connexion',
 	  pathMatch: 'full'
     }
 
@@ -55,7 +55,7 @@ const appRoutes: Routes = [
      RouterModule.forRoot(appRoutes),
       HttpModule,FormsModule
   ],
-  providers: [ClientsService,ProfilService,ConnexionService,UserService],
+  providers: [ClientsService,ProfilService,ConnexionService,UserService,UtilityService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

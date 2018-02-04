@@ -1,8 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ConnexionService } from 'services/connexion.service';
+import {UtilityService} from "services/utility.service";
+import {AppComponent} from "app/app.component";
+
 import {Message} from 'primeng/primeng';
-import { User } from 'models/model.user';
+//import { User } from 'models/model.user';
 
 //import {AuthService} from "services/auth.service";
 //import {UtilityService} from "services/utility.service";
@@ -13,16 +16,27 @@ import { User } from 'models/model.user';
   templateUrl: './connexion.component.html',
   styleUrls: ['./connexion.component.css']
 })
+
+
+
+
 export class ConnexionComponent implements OnInit {
 	    private msgs: Message[] = [];
 	   username:string ; 
      password:string ; 
      user:any ;
 
-  constructor(private router:Router, private connexionService : ConnexionService) { }
+  constructor(private router:Router, private appComponent:AppComponent ,  private connexionService : ConnexionService , private utility:UtilityService) { }
 
   ngOnInit() {
+
+     this.utility.isLogged().then((result: boolean) => {
+            if(result) {
+                this.router.navigate(['profil']);
+            }
+        })
   }
+
 
 
 
@@ -40,7 +54,16 @@ for (var i = 0; i < this.user.length; i++) {
 
     if (this.user[i].username === this.username && this.user[i].password === this.password ) {
   
-this.router.navigate(['profil'] ) ;    
+  if(typeof (Storage) !== 'undefined') {
+                    sessionStorage.setItem('currName',this.user[i].username);
+
+                    sessionStorage.setItem('currId',this.user[i].idUser);
+
+                }
+                              this.appComponent.ngOnInit();
+                                    this.router.navigate(['profil'] ) ; 
+
+
 }}
 
     },err=> {
@@ -50,7 +73,12 @@ this.router.navigate(['profil'] ) ;
 
 
 }  
+register() {
+this.router.navigate(['inscription'] ) ;    
 
+
+
+}
 
 
     }

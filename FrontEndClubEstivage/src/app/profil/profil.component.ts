@@ -1,8 +1,8 @@
 import { Component,Inject, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { ProfilService } from 'services/profil.service';
+import {UtilityService} from "services/utility.service";
 
-import { SESSION_STORAGE, WebStorageService } from 'angular-webstorage-service';
 
 @Component({
   selector: 'app-profil',
@@ -14,30 +14,43 @@ export class ProfilComponent implements OnInit {
   user:any ;
   currentUser:any;
 
-  constructor (   public profilservice : ProfilService   , @Inject(SESSION_STORAGE) private storage: WebStorageService ) { }
+
+  constructor (  private router:Router, public profilservice : ProfilService , private utility:UtilityService)   { }
 
 
   ngOnInit() {
 
 
-this.profilservice.GetInfoUser()
-		.subscribe(data=>{
-			this.user=data;
-			console.log(this.user) ; 
-		
-		},err=> {
-		     console.log(err);
-		});
+ this.utility.isLogged().then((result: boolean) => {
+            if(!result) {
+                           this.router.navigate(['connexion']);
 
-this.currentUser = this.storage.get('currentuser');
+            }
+
+            else{
+                this.profile();
+
+            }
+        })
+
 
   }
 
 
+profile() {
+
+this.profilservice.GetInfoUser()
+    .subscribe(data=>{
+      this.user=data;
+      console.log(this.user) ; 
+    
+    },err=> {
+         console.log(err);
+    });
 
 
 
-
+}
 
 
 

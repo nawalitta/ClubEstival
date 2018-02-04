@@ -36,6 +36,10 @@ user:User= new User();
 		});
   }
 
+  login(){
+this.router.navigate(['connexion'] ) ;    
+
+  }
 
 
 
