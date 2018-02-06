@@ -12,7 +12,7 @@ import org.springframework.web.bind.annotation.RestController;
 
 import insa.dao.UserRepository;
 import insa.entities.Client;
-import insa.entities.Role;
+import insa.entities.Reservation;
 import insa.entities.User;
 
 @RestController
@@ -28,6 +28,12 @@ public class UserRestService {
 		
 	}
 	
+
+	@RequestMapping(value="/usersNonActive",method=RequestMethod.GET)
+	public List<User> getUsersNonActive(){
+		return userRepository.UserNonActive(false);
+		
+	}
 	
 	@RequestMapping(value="/users/{id}",method=RequestMethod.GET)
 	public User getUser(@PathVariable Long id){
@@ -35,6 +41,33 @@ public class UserRestService {
 		
 	}
 	
+	/*@RequestMapping(value="/u/{id}",method=RequestMethod.PUT)
+	public Reservation editReservation(@PathVariable Long id,@RequestBody Reservation c){
+		c.setIdReservation(id);
+		return reservationRepository.save(c);
+		
+	}*/
+	
+	/*@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
+	public boolean activate(@PathVariable Long id,@RequestBody User u) {
+		userRepository.activate(true,id) ;
+		userRepository.save(u);
+		return true;		
+		
+	}*/
+	
+	@RequestMapping(value="/users/{id}",method=RequestMethod.PUT)
+	public User activate(@PathVariable Long id,@RequestBody User u) {
+			
+		//u.setIdUser(id);
+		
+		return userRepository.save(u);
+		}
+		
+	
+
+
+
 	@RequestMapping(value="/users",method=RequestMethod.POST)
 	public User save(@RequestBody User u){
 		return userRepository.save(u);

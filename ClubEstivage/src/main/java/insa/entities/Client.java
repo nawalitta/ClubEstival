@@ -3,12 +3,13 @@ package insa.entities;
 import java.io.Serializable;
 import java.util.Collection;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
-
 
 @Entity
 public class Client implements Serializable{
@@ -19,13 +20,24 @@ public class Client implements Serializable{
 	private String adresse;
 	private String email;
 	private String tel;
+    /*@OneToMany(mappedBy="client")
+	private Collection<Reservation> reservations;
 	
+	
+	
+	public Collection<Reservation> getReservations() {
+		return reservations;
+	}
+	public void setReservations(Collection<Reservation> reservations) {
+		this.reservations = reservations;
+	}*/
 	public Long getIdClient() {
 		return idClient;
 	}
 	public void setIdClient(Long idClient) {
 		this.idClient = idClient;
 	}
+	
 	public String getNomClient() {
 		return nomClient;
 	}

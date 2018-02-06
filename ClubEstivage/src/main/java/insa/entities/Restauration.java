@@ -28,8 +28,8 @@ public class Restauration implements Serializable{
 	@NotEmpty
 	@Size(min = 4, max = 150)
 	private String description;
-	@Lob
-	private byte[] photo;
+	//@Lob
+	//private byte[] photo;
 	private String nomPhoto;
 	@DecimalMin(value="150")
 	private double tarifRestauration;
@@ -75,12 +75,12 @@ public class Restauration implements Serializable{
 	public void setDescription(String description) {
 		this.description = description;
 	}
-	public byte[] getPhoto() {
+	/*public byte[] getPhoto() {
 		return photo;
 	}
 	public void setPhoto(byte[] photo) {
 		this.photo = photo;
-	}
+	}*/
 	public String getNomPhoto() {
 		return nomPhoto;
 	}
@@ -97,12 +97,11 @@ public class Restauration implements Serializable{
 		super();
 		// TODO Auto-generated constructor stub
 	}
-	public Restauration(String typeRestauration, String nomRestauration, String typeRepas, String description,byte[] photo, String nomPhoto, double tarifRestauration) {
+	public Restauration(String typeRestauration, String nomRestauration, String typeRepas, String description, String nomPhoto, double tarifRestauration) {
 		super();
 		this.nomRestauration= nomRestauration;
 		this.description= description;
 		this.nomPhoto=nomPhoto;
-		this.photo=photo;
 		this.tarifRestauration = tarifRestauration;
 		this.typeRestauration = typeRestauration;
 		this.typeRepas = typeRepas;

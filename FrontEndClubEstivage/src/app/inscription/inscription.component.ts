@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { User } from 'models/model.user';
 import { UserService } from 'services/user.service';
 import { Router } from '@angular/router';
+import { Client } from 'models/model.client';
 
 @Component({
   selector: 'app-inscription',
@@ -20,15 +21,19 @@ export class InscriptionComponent implements OnInit {
 
 
 
-user:User= new User();
+user:User = new User()  ;
+//ficheclient:Client = new Client() ; ; 
 	//mode:number=1;
-
 
 //console.log(this.user.username);
   ajouterUser(){
+
+   // user:User = new User(this.user.username,this.user.password,this.ficheclient);
+
+    console.log("Voila 1 " + this.user) ;
   	this.userservice.saveUser(this.user)
   		.subscribe(data=>{
-			console.log(data);
+			console.log("voilaaa" + data);
       this.router.navigate(['connexion'] ) ; 
 
 		},err=> {

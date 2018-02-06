@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Client } from 'models/model.client';
 import { ClientsService } from 'services/clients.service';
+import { Router } from '@angular/router';
+import {UtilityService} from "services/utility.service";
 
 
 @Component({
@@ -11,12 +13,26 @@ import { ClientsService } from 'services/clients.service';
 export class NewClientComponent implements OnInit {
 
 	client:Client= new Client();
-	mode:number=1;
+	mode:number=1; 
 
 
-  constructor(public clientsservice: ClientsService) { }
+  constructor(public clientsservice: ClientsService , private router: Router,private utility:UtilityService) { }
 
   ngOnInit() {
+
+
+
+this.utility.isLogged().then((result: boolean) => {
+            if(!result) {
+                           this.router.navigate(['connexion']);
+
+            }
+
+            
+        })
+
+
+
   }
 
 

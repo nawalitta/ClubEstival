@@ -18,7 +18,7 @@ export class ConnexionService{
 
  return this.http.get("http://localhost:1994/users").map(resp=> resp.json()) ;
     
-console.log("Ok") ;
+//console.log("Ok") ;
 
 
 }

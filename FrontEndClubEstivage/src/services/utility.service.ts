@@ -8,11 +8,18 @@ export class UtilityService {
 
     isLogged(): Promise<boolean> {
         if(typeof (Storage) !== 'undefined') {
-            if(sessionStorage.getItem('currId')) {
+            if(sessionStorage.length!= 0) {
                 return Promise.resolve(true);
             }
         }
         return Promise.resolve(false);
     }
+
+
+
+
+
+
+    
 
 }

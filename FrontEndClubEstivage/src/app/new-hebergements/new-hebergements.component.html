@@ -1,0 +1,43 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Nouveau Hebergement</div>
+			<div class="panel-body">
+			  
+
+				  <div class="form-group">
+				    <label for="staticID" class="control-label"> Nom :</label>
+				    <input type="text"  class="form-control" [(ngModel)]="hebergement.nomHebergement" />
+				  </div>
+
+				  <div class="form-group">
+				    <label for="staticID" class="control-label"> Type :</label>
+				     <input type="text" class="form-control" [(ngModel)]="hebergement.typeHebergement" />
+				  </div>
+
+				  <div class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Description :</label>
+				    <input type="email" class="form-control" id="staticEmail" [(ngModel)]="hebergement.description" />
+				  </div>
+				  <div class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Tarif  :</label>
+				    <input type="text" class="form-control" [(ngModel)]="hebergement.tarifHebergement" />
+				  </div>
+
+				  <div class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Emplacement :</label>
+				    <input type="text" class="form-control" [(ngModel)]="hebergement.emplacement" />
+				  </div>
+
+				  <div class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Disponibilité:</label>
+				    <input type="text" class="form-control" [(ngModel)]="hebergement.disponobilite" />
+				  </div>
+
+
+			     <button class="btn btn-primary" (click)="ajouterHebergement()">Ajouter</button>
+
+		</div>
+
+	</div>
+
+</div>

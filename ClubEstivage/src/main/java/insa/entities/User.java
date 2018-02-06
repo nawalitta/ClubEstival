@@ -10,6 +10,7 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.OneToMany;
+import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -23,13 +24,33 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 	private boolean actived;
+	private boolean role;
+	
+	public Client getFicheClient() {
+		return ficheClient;
+	}
+
+	public void setFicheClient(Client ficheClient) {
+		this.ficheClient = ficheClient;
+	}
+
+	@OneToOne
+	@JoinColumn(name ="fiche_client")
+	private Client ficheClient ; 
+
 	// l'association est unidirectionnelle, donc il faut sp�cifier la jointure
 	// ici
 	// c�d l'annotation "@JoinColumn" ici et non pas dans la classe Role puisque
 	// on n'a pas d�clar� d'objet user dans la classe "Role"
-	@OneToMany
-	@JoinColumn(name = "user_id")
-	private Collection<Role> roles;
+	
+
+	public boolean isRole() {
+		return role;
+	}
+
+	public void setRole(boolean role) {
+		this.role = role;
+	}
 
 	public Long getIdUser() {
 		return idUser;
@@ -63,13 +84,6 @@ public class User implements Serializable {
 		this.actived = actived;
 	}
 
-	public Collection<Role> getRoles() {
-		return roles;
-	}
-
-	public void setRoles(Collection<Role> roles) {
-		this.roles = roles;
-	}
 
 	public User() {
 		super();
@@ -78,6 +92,7 @@ public class User implements Serializable {
 
 	public User(String username, String password, boolean actived) {
 		super();
+		this.role=false ; 
 		this.username = username;
 		this.password = password;
 		this.actived = actived;

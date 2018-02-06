@@ -2,6 +2,8 @@ package insa.web;
 
 import java.util.List;
 
+import javax.persistence.Query;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
@@ -59,6 +61,31 @@ public class ClientRestService {
 		 
 	}
 	
+
+	@RequestMapping(value="/clientsbyHebergement",method=RequestMethod.GET)
+	public Page<Client>  troverClientParTypeHebergement(
+			@RequestParam (name="typeHebergement", defaultValue="") String typeHebergement,
+			@RequestParam (name="page", defaultValue="0") int page,
+			@RequestParam (name="size", defaultValue="5") int size
+			){
+		//System.out.println(clientRepository.trouverParTypeHebergement("%"+typeHebergement+"%" ,new PageRequest(page, size)));
+		 return clientRepository.trouverParTypeHebergement("%"+typeHebergement+"%" ,new PageRequest(page, size));
+	   
+		 
+	}
+	
+	
+	@RequestMapping(value="/clientsbyRestauration",method=RequestMethod.GET)
+	public Page<Client>  troverClientParTypeRestauration(
+			@RequestParam (name="typeRestauration", defaultValue="") String typeRestauration,
+			@RequestParam (name="page", defaultValue="0") int page,
+			@RequestParam (name="size", defaultValue="5") int size
+			){
+		//System.out.println(clientRepository.trouverParTypeHebergement("%"+typeHebergement+"%" ,new PageRequest(page, size)));
+		 return clientRepository.trouverParTypeHebergement("%"+typeRestauration+"%" ,new PageRequest(page, size));
+	   
+		 
+	}
 	
 	
 	

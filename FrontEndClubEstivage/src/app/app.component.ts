@@ -13,9 +13,11 @@ import { Router } from '@angular/router';
 
 export class AppComponent {
   title = 'app';
+
   constructor(private router:Router) { }
 
   logged:boolean = false;
+  isAdmin:boolean = false;
 
 
    ngOnInit() {
@@ -23,7 +25,11 @@ export class AppComponent {
 if(sessionStorage.length!= 0) {
 
 	this.logged = true ;
+  //this.isAdmin= sessionStorage.getItem("isAdmin");
+  //console.log(this.isAdmin) ;
 }
+
+
  
 console.log("coucou" + this.logged) ;
 
@@ -38,9 +44,18 @@ logout(){
 
 	sessionStorage.clear();
 	this.logged = false ; 
+  this.isAdmin = false ; 
+
 	this.router.navigate(['connexion'] ) ;    
 
 }
+
+
+
+
+
+
+
 
 
 }

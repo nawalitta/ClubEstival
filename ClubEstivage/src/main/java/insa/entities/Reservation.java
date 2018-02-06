@@ -3,13 +3,18 @@ package insa.entities;
 
 import java.io.Serializable;
 import java.util.Collection;
+
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+
+
 
 @Entity
 public class Reservation implements Serializable {
@@ -43,7 +48,7 @@ public class Reservation implements Serializable {
 	public void setClient(Client client) {
 		this.client = client;
 	}
-
+	
 	public Long getIdReservation() {
 		return idReservation;
 	}
@@ -126,15 +131,17 @@ public class Reservation implements Serializable {
 
 	public Reservation() {
 		super();
-		this.client = new Client();
+	
 
 	}
 
-	public Reservation(String nomReservation, int nbrPersonne, int nbrSemaine) {
+	public Reservation(String nomReservation, int nbrPersonne, int nbrSemaine, Client client, Hebergement hebergement) {
 		super();
 		this.nomReservation = nomReservation;
 		this.nbrPersonne = nbrPersonne;
 		this.nbrSemaine = nbrSemaine;
+		this.client=client;
+		this.hebergement=hebergement;
 
 	}
 

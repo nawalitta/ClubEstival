@@ -1,0 +1,46 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Liste des clients </div>
+		<div class="panel-body">
+			  <div class="form-group row">
+			    <label for="staticID" class="col-sm-2 col-form-label"> Nom</label>
+			   
+
+			 
+
+			  </div>
+			  
+			<table class="table table-striped ">
+				<tr>
+					<th>ID</th>
+					<th>NOM</th>
+					<th>MAIL</th>
+					<th>ADRESSE</th>
+					<th>TEL </th>
+					<th>Activer </th>
+
+					
+				</tr>
+				<tr *ngFor="let c of clientInactif">
+
+					<td>{{c.idUser}}</td>
+					<td>{{c.ficheClient.nomClient}}</td>
+					<td>{{c.ficheClient.email}}</td>
+					<td>{{c.ficheClient.adresse}}</td>
+					<td>{{c.ficheClient.tel}}</td>
+					<td><button (click)="activer(c)" type="button" class="btn btn-primary">Valider user</button></td>
+
+
+					
+				</tr>
+			</table>
+			
+
+
+		</div>
+
+	</div>
+
+
+
+</div>
