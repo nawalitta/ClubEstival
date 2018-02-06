@@ -11,6 +11,7 @@ import { UserService } from 'services/user.service';
 
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ConnexionService } from 'services/connexion.service';
+import { RestaurationService } from 'services/restauration.service';
 import {UtilityService} from "services/utility.service";
 
 
@@ -35,21 +36,27 @@ import { EditReservationComponent } from './edit-reservation/edit-reservation.co
 import { DeleteReservationComponent } from './delete-reservation/delete-reservation.component';
 import { ProfilComponent } from './profil/profil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
+import { ListHebergementComponent } from './list-hebergement/list-hebergement.component';
+import { ListRestaurationComponent } from './list-restauration/list-restauration.component';
+import { EditHebergementComponent } from './edit-hebergement/edit-hebergement.component';
 
 
 const appRoutes: Routes = [
 	{ path: 'clients', component: ClientsComponent },
 	{ path: 'new-client', component: NewClientComponent },
 	{ path: 'reservations', component: ReservationsComponent },
-	{ path: 'new-reservation/:id', component: NewReservationComponent },
+	{ path: 'new-reservation', component: NewReservationComponent },
 	{ path: 'hebergements', component: HebergementsComponent },
 	{ path: 'new-hebergement', component: NewHebergementsComponent },
 	{ path: 'edit-reservation/:id', component: EditReservationComponent},
+	{ path: 'edit-hebergement/:id', component: EditHebergementComponent},
 	{ path: 'delete-reservation/:id', component: DeleteReservationComponent },
 	{ path: 'connexion', component: ConnexionComponent },
   	{ path: 'profil', component: ProfilComponent },
   	{ path: 'inscription', component: InscriptionComponent },
-
+  	{ path: 'restaurations', component: RestaurationsComponent },
+    { path: 'list-hebergement/:id', component: ListHebergementComponent },
+    { path: 'list-restauration/:id', component: ListRestaurationComponent},
 	{ path: '',
 	  redirectTo: '/connexion',
 	  pathMatch: 'full'
@@ -74,12 +81,15 @@ const appRoutes: Routes = [
     DeleteReservationComponent,
     ConnexionComponent,
     ProfilComponent,
-    InscriptionComponent
+    InscriptionComponent,
+    ListHebergementComponent,
+    ListRestaurationComponent,
+    EditHebergementComponent
   ],
   imports: [
     BrowserModule,  RouterModule.forRoot(appRoutes), HttpModule,FormsModule
   ],
-  providers: [ClientsService, ReservationsService, HebergementsService,ProfilService,ConnexionService,UserService,UtilityService],
+  providers: [ClientsService, ReservationsService, HebergementsService,ProfilService,ConnexionService,UserService,UtilityService, RestaurationService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

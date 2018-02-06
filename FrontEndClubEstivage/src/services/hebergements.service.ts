@@ -28,6 +28,35 @@ export class HebergementsService{
 
  }
 
+  updateHebergement(hebergement: Hebergement){
+ 	return this.http.put("http://localhost:1994/hebergement/"+hebergement.idHebergement,hebergement)
+  	.map(resp=> resp.json());
+ }
+
+
+  getDisponibiliteHebergementByIdHebergement(idHebergement:number){
+ 	return this.http.get("http://localhost:1994/DisponibiliteHebergement?idHebergement="+idHebergement)
+  	.map(resp=> resp.json());
+
+ }
+
+ deleteHebergement(id:number){
+ 	return this.http.delete("http://localhost:1994/hebergement/"+id)
+  	.map(resp=> resp.json());
+ }
+
+ getSemaine(id:number){
+ 	return this.http.get("http://localhost:1994/semaines/"+id)
+  	.map(resp=> resp.json());
+
+ }
+
+ getSemaines(){
+ 	return this.http.get("http://localhost:1994/semaines")
+  	.map(resp=> resp.json());
+
+ }
+
  
 
 }

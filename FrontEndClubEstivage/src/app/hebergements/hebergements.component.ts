@@ -1,7 +1,11 @@
 import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import "rxjs/add/operator/map";
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
+
 import { HebergementsService } from 'services/hebergements.service';
+import { Hebergement } from 'models/model.hebergement';
+
 
 
 
@@ -19,11 +23,13 @@ export class HebergementsComponent implements OnInit {
   currentPage:number=0;
   size:number=5;
   pages:Array<number>;
+  semaineDisponbilite:any;
+  hebergementSelectionne:Hebergement;
 
-  constructor(public http:Http, public hebergementsservice: HebergementsService ) { }
+  constructor(public http:Http, public hebergementsservice: HebergementsService, private router: Router ) { }
 
   ngOnInit() {
-
+  	this.doSearch();
   	
   }
   
@@ -39,12 +45,44 @@ export class HebergementsComponent implements OnInit {
 		});
 
 
+
+
   }
+
+  gotoPageHbergement(idHebergement:number){
+
+  	  this.router.navigate(['list-hebergement',idHebergement ]);
+
+  }
+
 
   chercherHebergement(){
 
   	this.doSearch();
 
+  }
+  reserverHebergement(id:number){
+  	
+
+  }
+  modifierHebergement(id:number){
+  	this.router.navigate(['edit-hebergement',id]);
+  }
+  supprimerHebergement(hebergement:Hebergement){
+  	let confirme=window.confirm('Est vous sure ?');
+  	if(confirme==true){
+  	this.hebergementsservice.deleteHebergement(hebergement.idHebergement)
+  		.subscribe(data=>{
+  			console.log("data");
+  			this.pageClients.content.splice(
+  					this.pageClients.content.indexOf(hebergement), 1
+  				); 
+			this.ngOnInit();
+			this.router.navigate(['hebergements']);
+		},err=> {
+		     console.log(err);
+		});
+  	}
   }
 
   gotoPage(i:number){

@@ -18,6 +18,7 @@ export class ClientsComponent implements OnInit {
 
   motCle:string="";
   typeHebergement:string="";
+  typeRestauration:string="";
   currentPage:number=0;
   size:number=5;
   pages:Array<number>;
@@ -26,7 +27,13 @@ export class ClientsComponent implements OnInit {
 
   ngOnInit() {
 
+      this.clientsservice.getClients(this.motCle, this.currentPage, this.size)
+		.subscribe(data=>{
+			this.pageClients=data;
 
+		},err=> {
+		     console.log(err);
+		});
   	
   }
   
@@ -52,6 +59,17 @@ export class ClientsComponent implements OnInit {
 
   chercherClientByTypeHebergement(){
   	this.clientsservice.getClientsByTypeHebergement(this.typeHebergement, this.currentPage, this.size)
+		.subscribe(data=>{
+			this.pageClients=data;
+
+		},err=> {
+		     console.log(err);
+		});
+
+
+  }
+  chercherClientByTypeRestauration(){
+  	this.clientsservice.getClientsByTypeRestauration(this.typeRestauration, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
 

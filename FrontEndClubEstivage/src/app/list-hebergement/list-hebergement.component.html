@@ -1,0 +1,56 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Hebergement {{hebergementSelectionne.nomHebergement}} </div>
+		<div class="panel-body">
+			  
+			<ul>
+				<li>ID : {{hebergementSelectionne.idHebergement}}</li>
+				<li>NOM : {{hebergementSelectionne.nomHebergement}}</li>
+				<li>Type : {{hebergementSelectionne.typeHebergement}}</li>
+				<li>Description : {{hebergementSelectionne.descriptiont}}</li>
+				<li>Tarif : {{hebergementSelectionne.tarifHebergement}}</li>
+				<li>Emplacement : {{hebergementSelectionne.emplacement}}</li>
+			</ul>
+
+			<h2> Disponibilité </h2>
+
+			<table *ngIf="mode" class="table table-striped ">
+				<tr>
+					<th>Date premier jour </th>
+					<th>Date dernier jour </th>
+					<th>Réserver</th>
+					
+				</tr>
+				<tr  *ngFor="let c of semaineDisponbilite?.content">
+					<td>{{c.datePremierJour | date : "fullDate" }}</td>
+					<td>{{c.dateDernierJour | date : "fullDate" }}</td>
+			       <td><button class="btn btn-primary" (click)="dirigeVersNewReservation(hebergementSelectionne.idHebergement,c.idSemaine)" >Réserver</button></td>
+				</tr>
+
+				
+			</table>
+
+			<table *ngIf="!mode" class="table table-striped ">
+				<tr>
+					<th>Date premier jour </th>
+					<th>Date dernier jour </th>
+					<th>Réserver</th>
+					
+				</tr>
+				
+				<tr  *ngFor="let c of semaineDisponbilite">
+					<td>{{c.dateDernierJour | date : "fullDate" }}</td>
+					<td>{{c.datePremierJour | date : "fullDate" }}</td>
+					
+			       <td><button class="btn btn-primary" (click)="dirigeVersNewReservation(hebergementSelectionne.idHebergement,c.idSemaine)" >Réserver</button></td>
+				</tr>
+			</table>
+			
+
+		</div>
+
+	</div>
+
+
+
+</div>

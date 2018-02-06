@@ -19,18 +19,30 @@ export class ReservationsComponent implements OnInit {
   currentPage:number=0;
   size:number=5;
   pages:Array<number>;
+  idSemaine:number;
 
   constructor(public http:Http, public reservationsservice: ReservationsService, private router: Router) { }
 
   ngOnInit() {
-  	this.reservationsservice.getAllReservation()
-  		.subscribe(data=>{
-			this.pageClients=data; 
+  	this.doSearch();
+  }
+
+
+  chercherReservationBySemaineId(){
+
+  	this.reservationsservice.getReservationBySemaineId(this.idSemaine, this.currentPage, this.size)
+		.subscribe(data=>{
+			this.pageClients=data;
+			this.pages=new Array(data.totalPages);
 		},err=> {
 		     console.log(err);
 		});
 
+
   }
+
+
+
 
   doSearch(){
 

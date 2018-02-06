@@ -19,6 +19,15 @@
 			    </div>
 
 			  </div>
+
+			   <div class="form-group row">
+			    <label for="staticID" class="col-sm-2 col-form-label"> Type Restauration</label>
+			    <div class="col-sm-10">
+			      <input type="text" class="form-control-plaintext" [(ngModel)]="typeRestauration" />
+			      <button class="btn btn-primary" (click)="chercherClientByTypeHebergement()">Chercher clients par type restauration</button>
+			    </div>
+
+			  </div>
 			  
 			<table class="table table-striped ">
 				<tr>
@@ -27,8 +36,8 @@
 					<th>MAIL</th>
 					<th>ADRESSE</th>
 					<th>TEL </th>
-					<th>Type Hebergement </th>
-					<th>Nom Réservation </th>
+					<!--<th>Type Hebergement </th>
+					<th>Nom Réservation </th>-->
 				</tr>
 				<tr *ngFor="let c of pageClients?.content">
 					<td>{{c.idClient}}</td>
@@ -36,8 +45,8 @@
 					<td>{{c.email}}</td>
 					<td>{{c.adresse}}</td>
 					<td>{{c.tel}}</td>
-					<td>{{c.reservation.hebergement.typeHebergement}}</td>
-					<td>{{c.reservation.nomReservation}}</td>
+					<!--<td>{{c.reservation.hebergement.typeHebergement}}</td>
+					<td>{{c.reservation.nomReservation}}</td>-->
 				</tr>
 			</table>
 			<div class="container">

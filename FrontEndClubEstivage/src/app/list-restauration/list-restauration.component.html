@@ -1,0 +1,26 @@
+<div class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Restauration : {{restaurationSelectionne.nomRestauration}} </div>
+		<div class="panel-body">
+			  
+			<ul>
+				<li>ID : {{restaurationSelectionne.idRestauration}}</li>
+				<li>NOM : {{restaurationSelectionne.nomRestauration}}</li>
+				<li>Type : {{restaurationSelectionne.typeRestauration}}</li>
+				<li>Description : {{restaurationSelectionne.descriptiont}}</li>
+				<li>Type Repas : {{restaurationSelectionne.typeRepas}}</li>
+				<li>Emplacement : {{hebergementSelectionne.emplacement}}</li>
+			</ul>
+
+			
+		 <button class="btn btn-primary" (click)="dirigeVersNewReservation(restaurationSelectionne.idRestauration)" >Réserver</button>
+		
+			
+
+		</div>
+
+	</div>
+
+
+
+</div>
