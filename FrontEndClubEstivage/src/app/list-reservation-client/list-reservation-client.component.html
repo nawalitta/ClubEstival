@@ -1,0 +1,94 @@
+<div  *ngIf="mode==1" class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Liste des reservations </div>
+		<div class="panel-body">
+			 
+
+
+
+			
+			  
+			<table class="table table-striped ">
+				<tr>
+					<th>ID</th>
+					<th>NOM Réservation</th>
+					<th>Nombre Personne</th>
+					<th>Nombre Semaine</th>
+					<th>Total </th>
+					<td>Type Paiement</td>
+					<td>idSemaine</td>
+					<td>Date Premier jour </td>
+					<td>Date dernier jour </td>
+					<td> type hebergement</td>
+					<td> id hebergement</td>
+					<td>---------------</td>
+					
+				</tr>
+				<tr *ngFor="let c of pageClients?.content">
+					<td><a (click)="gotoPageReservation(c.idReservation)" class="clickable" >{{c.idReservation}}</a></td>
+					<td>{{c.nomReservation}}</td>
+					<td>{{c.nbrPersonne}}</td>
+					<td>{{c.nbrSemaine}}</td>
+					<td>{{c.total}}</td>
+                   <td>{{c.typePaiement}}</td>
+					<td>{{c.semaine.idSemaine}}</td>
+					<td>{{c.semaine.dateDernierJour | date : "fullDate" }}</td>
+					<td>{{c.semaine.datePremierJour | date : "fullDate" }}</td>
+					<td>{{c.hebergement.typeHebergement}}</td>
+					<td>{{c.hebergement.idHebergement}}</td>
+					<td><button class="btn btn-primary" (click)="modifierReservation(c.idReservation)">Modifier</button> <button class="btn btn-primary"  (click)="supprimerReservation(c)" >Annuler</button></td>
+			
+					
+				</tr>
+			</table>
+			<div class="container">
+				<ul class="nav nav-pills">
+					<li  [ngClass]="{'active' :currentPage ==(i)}"  *ngFor = "let p of pages; let i=index" >
+
+						<a (click)="gotoPage(i)" class="clickable" >{{i}}</a>
+
+				    </li>
+
+				</ul>
+
+			</div>
+
+		</div>
+
+	</div>
+
+
+
+
+</div>
+
+
+<div   *ngIf="mode==2" class="container spacer">
+	<div class="panel panel-primary">
+		<div class="panel-heading"> Reservation {{reservationSelectionne.nomReservation}} </div>
+		<div class="panel-body">
+			  
+			<ul>
+				<li>ID : {{reservationSelectionne.idReservation}}</li>
+				<li>NOM : {{reservationSelectionne.nomReservation}}</li>
+				<li>nombre de personne : {{reservtaionSelectionne.nbrPersonne}}</li>
+				<li>Total : {{reservtaionSelectionne.total}}</li>
+				<li>Type paiement : {{reservationSelectionne.typePaiement}}</li>
+				<li>Date premier jour : {{reservationSelectionne.semaine.dateDernierJour | date : "fullDate" }}</li>
+				<li>Date dernier jour : {{reservationSelectionne.semaine.datePremierJour | date : "fullDate" }}</li>
+			</ul>
+
+		
+
+		
+
+			
+			
+
+		</div>
+
+	</div>
+
+
+
+</div>

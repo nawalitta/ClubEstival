@@ -23,11 +23,11 @@
 				<tr *ngFor="let c of pageClients?.content">
 					<td><a (click)="gotoPageRestauration(c.idRestauration)" class="clickable" >{{c.idRestauration}}</a></td>
 					<td>{{c.nomRestauration}}</td>
-					<td>{{c.typeHebergement}}</td>
 					<td>{{c.typeRestauration}}</td>
 					<td>{{c.typeRepas}}</td>
 					<td>{{c.description}}</td>
-					<td><button class="btn btn-primary" >Réserver</button></td>
+					<td><button class="btn btn-primary" (click)="modifierRestauration(c.idRestauration)">Modifier</button> <button class="btn btn-primary"  (click)="supprimerRestauration(c)" >Annuler</button></td>
+
 				</tr>
 			</table>
 			<div class="container">

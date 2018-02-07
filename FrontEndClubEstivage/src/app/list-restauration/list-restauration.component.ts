@@ -2,8 +2,8 @@ import { Component, OnInit } from '@angular/core';
 import { Http } from '@angular/http';
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import "rxjs/add/operator/map";
-import { RestaurationService } from 'services/restauration.service';
 import { Restauration } from 'models/model.restauration';
+import {  RestaurationService } from 'services/restauration.service';
 
 
 

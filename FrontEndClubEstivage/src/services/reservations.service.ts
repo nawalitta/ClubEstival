@@ -51,6 +51,25 @@ getReservationBySemaineId(id :number, page:number , size:number){
 
  }
 
+
+ // client 
+
+
+//  lister reservations avec id client et id reservation
+consulterReservationById(idR :number,idC :number, page:number , size:number){
+ 	return this.http.get("http://localhost:1994/consulterReservationById?&idR="+idR+"&idC="+idC+"&size="+size+"&page="+page+"")
+  	.map(resp=> resp.json());
+
+ }
+
+//lister all reservations with id client 
+ consulterReservationByIdClient(idC :number, page:number , size:number){
+ 	return this.http.get("http://localhost:1994/consulterReservationByIdClient?&idC="+idC+"&size="+size+"&page="+page+"")
+  	.map(resp=> resp.json());
+
+ }
+
+
 }
 	
   

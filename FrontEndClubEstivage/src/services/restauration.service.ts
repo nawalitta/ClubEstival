@@ -16,7 +16,7 @@ export class RestaurationService{
 
  }
 
- saveHebergement(restauration:Restauration){
+ saveRestauration(restauration:Restauration){
  	return this.http.post("http://localhost:1994/restaurations",restauration)
   	.map(resp=> resp.json());
 
@@ -33,6 +33,17 @@ export class RestaurationService{
   	.map(resp=> resp.json());
 
  }
+
+ updateRestauration(restauration: Restauration){
+ 	return this.http.put("http://localhost:1994/restauration/"+restauration.idRestauration,restauration)
+  	.map(resp=> resp.json());
+ }
+
+ deleteRestauration(id:number){
+ 	return this.http.delete("http://localhost:1994/restauration/"+id)
+  	.map(resp=> resp.json());
+ }
+
 
 
 

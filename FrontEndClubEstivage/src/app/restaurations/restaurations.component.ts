@@ -6,6 +6,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 import { RestaurationService } from 'services/restauration.service';
 import { Hebergement } from 'models/model.hebergement';
+import { Restauration } from 'models/model.restauration';
 
 @Component({
   selector: 'app-restaurations',
@@ -61,6 +62,27 @@ export class RestaurationsComponent implements OnInit {
  gotoNewReservation(){
  	 this.router.navigate(['new-reservation']);
  }
+
+ modifierRestauration(id:number){
+  	this.router.navigate(['edit-restauration',id]);
+  }
+
+  supprimerRestauration(restauration:Restauration){
+  	let confirme=window.confirm('Est vous sure ?');
+  	if(confirme==true){
+  	this.restaurationsservice.deleteRestauration(restauration.idRestauration)
+  		.subscribe(data=>{
+  			console.log("data");
+  			this.pageClients.content.splice(
+  					this.pageClients.content.indexOf(restauration), 1
+  				); 
+			this.ngOnInit();
+			this.router.navigate(['restaurations']);
+		},err=> {
+		     console.log(err);
+		});
+  	}
+  }
 
   gotoPage(i:number){
   	this.currentPage=i;

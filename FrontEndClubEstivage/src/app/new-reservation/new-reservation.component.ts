@@ -77,6 +77,17 @@ export class NewReservationComponent implements OnInit {
 		},err=> {
 		     console.log(err);
 		});	
+        
+
+
+		this.clientsservice.getClient(sessionStorage.getItem('currId'))
+        .subscribe(data=>{
+			this.client =data;
+			console.log("mm");
+			console.log(this.client);
+		},err=> {
+		     console.log(err);
+		});	
 
 
   }
@@ -84,14 +95,7 @@ export class NewReservationComponent implements OnInit {
  
   ajouterReservation(){
   	
-    this.clientsservice.getClient(sessionStorage.getItem('currId'))
-    .subscribe(data=>{
-			this.client =data;
-			console.log("mm");
-			console.log(this.client);
-		},err=> {
-		     console.log(err);
-		});	
+    
     if(this.resOrNo){
 
    		 this.reservation.restauration = this.restauration;
@@ -101,8 +105,11 @@ export class NewReservationComponent implements OnInit {
 		this.reservation.restauration =null;
 
 	}
-	this.reservation.semaine=this.semaine;    
-    this.reservation.client=this.client;
+	this.reservation.semaine=this.semaine; 
+
+    
+    this.reservation.client = this.client;
+
     this.reservation.hebergement=this.hebergement;
   	this.reservationsservice.saveReservation(this.reservation)
   		.subscribe(data=>{

@@ -85,8 +85,29 @@ public class ReservationRestService {
 		
 	}
 	
-
 	
+	
+	@RequestMapping(value="/consulterReservationById",method=RequestMethod.GET)
+	public Reservation consulterReservationById(
+			@RequestParam (name="idR", defaultValue="1000")Long idR,
+			@RequestParam (name="idC", defaultValue="10000")Long idC,
+			@RequestParam (name="page", defaultValue="0") int page,
+			@RequestParam (name="size", defaultValue="5") int size
+			){
+		return  reservationRepository.consulterReservationById(idR,idC);
+		
+	}
+	
+	
+	@RequestMapping(value="/consulterReservationByIdClient",method=RequestMethod.GET)
+	public Page<Reservation> consulterReservationByIdClient(
+			@RequestParam (name="idC", defaultValue="10000")Long idC,
+			@RequestParam (name="page", defaultValue="0") int page,
+			@RequestParam (name="size", defaultValue="5") int size
+			){
+		return  reservationRepository.consulterReservationByIdClient(idC, new PageRequest(page, size));
+		
+	}
 	
 	
 }
