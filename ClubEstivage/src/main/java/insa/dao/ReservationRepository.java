@@ -10,6 +10,7 @@ import org.springframework.data.repository.query.Param;
 
 import insa.entities.Hebergement;
 import insa.entities.Reservation;
+import insa.entities.Client;
 
 public interface ReservationRepository extends JpaRepository<Reservation,Long>  {
 	@Query("select r from Reservation r where r.nomReservation like:x")
@@ -21,6 +22,16 @@ public interface ReservationRepository extends JpaRepository<Reservation,Long>  
 	
 	@Query("select r from Reservation r where r.hebergement.idHebergement=:x")
 	public Reservation trouverReservationByHebergement(@Param("x")Long id);
+	
+	
+	@Query("select r from Reservation r where  r.idReservation=:y and  r.client.idClient=:x")
+	public Reservation consulterReservationById(@Param("y")Long idReservation, @Param("x")Long idClient);
+	
+	@Query("select r from Reservation r where  r.client.idClient=:x")
+	public Page<Reservation> consulterReservationByIdClient(@Param("x")Long idClient, Pageable pageable);
+	
+	
+	
 	
 	
 	

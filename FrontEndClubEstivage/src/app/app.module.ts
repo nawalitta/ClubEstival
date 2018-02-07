@@ -39,6 +39,9 @@ import { InscriptionComponent } from './inscription/inscription.component';
 import { ListHebergementComponent } from './list-hebergement/list-hebergement.component';
 import { ListRestaurationComponent } from './list-restauration/list-restauration.component';
 import { EditHebergementComponent } from './edit-hebergement/edit-hebergement.component';
+import { EditRestaurationComponent } from './edit-restauration/edit-restauration.component';
+import { ListRestaurationClientComponent } from './list-restauration-client/list-restauration-client.component';
+import { ListReservationClientComponent } from './list-reservation-client/list-reservation-client.component';
 
 
 const appRoutes: Routes = [
@@ -48,15 +51,18 @@ const appRoutes: Routes = [
 	{ path: 'new-reservation', component: NewReservationComponent },
 	{ path: 'hebergements', component: HebergementsComponent },
 	{ path: 'new-hebergement', component: NewHebergementsComponent },
+	{ path: 'new-restauration', component: NewRestaurationsComponent },
 	{ path: 'edit-reservation/:id', component: EditReservationComponent},
 	{ path: 'edit-hebergement/:id', component: EditHebergementComponent},
 	{ path: 'delete-reservation/:id', component: DeleteReservationComponent },
+	{ path: 'edit-restauration/:id', component: EditRestaurationComponent},
 	{ path: 'connexion', component: ConnexionComponent },
   	{ path: 'profil', component: ProfilComponent },
   	{ path: 'inscription', component: InscriptionComponent },
   	{ path: 'restaurations', component: RestaurationsComponent },
     { path: 'list-hebergement/:id', component: ListHebergementComponent },
     { path: 'list-restauration/:id', component: ListRestaurationComponent},
+    { path: 'list-reservation-client', component: ListReservationClientComponent},
 	{ path: '',
 	  redirectTo: '/connexion',
 	  pathMatch: 'full'
@@ -84,7 +90,11 @@ const appRoutes: Routes = [
     InscriptionComponent,
     ListHebergementComponent,
     ListRestaurationComponent,
-    EditHebergementComponent
+    EditHebergementComponent,
+    EditRestaurationComponent,
+    ListRestaurationClientComponent,
+    ListReservationClientComponent
+    
   ],
   imports: [
     BrowserModule,  RouterModule.forRoot(appRoutes), HttpModule,FormsModule

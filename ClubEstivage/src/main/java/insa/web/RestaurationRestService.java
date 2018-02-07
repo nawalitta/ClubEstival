@@ -43,8 +43,9 @@ public class RestaurationRestService {
 		
 	}
 	
-	@RequestMapping(value="/restaurations/{id}",method=RequestMethod.DELETE)
+	@RequestMapping(value="/restauration/{id}",method=RequestMethod.DELETE)
 	public boolean  supprimer(@PathVariable Long id){
+		// à accomplir 
 		restaurationRepository.delete(id);
 	    return true;
 		
@@ -57,6 +58,13 @@ public class RestaurationRestService {
 			@RequestParam (name="size", defaultValue="5") int size
 			){
 		return  restaurationRepository.chercher("%"+mc+"%", new PageRequest(page, size));
+		
+	}
+	
+	@RequestMapping(value="/restauration/{id}",method=RequestMethod.PUT)
+	public Restauration editRestauration(@PathVariable Long id,@RequestBody Restauration c){
+		//c.setIdRestauration(id);
+		return restaurationRepository.save(c);
 		
 	}
 	

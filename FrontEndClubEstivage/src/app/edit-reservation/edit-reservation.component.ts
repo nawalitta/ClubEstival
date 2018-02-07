@@ -43,15 +43,22 @@ export class EditReservationComponent implements OnInit {
   
  
   modifierReservation(){
+  	
 	  this.reservationsservice.updateReservation(this.reservation)
 	  		.subscribe(data=>{
 	  			console.log(data);
 				alert("Mise à jour effectuée");
-				this.router.navigate(['reservations']);
+				 if(sessionStorage.getItem('isAdmin')==1){
+					this.router.navigate(['reservations']);
+			     }else{
+			     	this.router.navigate(['list-reservation-client']);
+			     }
 			},err=> {
 				console.log(err);
 			     alert("Problème !! ");
 			});
+
+	  
   }
 
 

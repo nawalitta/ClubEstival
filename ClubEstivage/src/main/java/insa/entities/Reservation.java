@@ -40,7 +40,6 @@ public class Reservation implements Serializable {
 	@ManyToOne
 	@JoinColumn(name = "idClient")
 	private Client client;
-
 	public Client getClient() {
 		return client;
 	}
