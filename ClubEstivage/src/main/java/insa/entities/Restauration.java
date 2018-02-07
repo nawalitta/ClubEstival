@@ -34,8 +34,8 @@ public class Restauration implements Serializable{
 	@DecimalMin(value="150")
 	private double tarifRestauration;
 	
-	@OneToMany(mappedBy="restauration")
-    private Collection<Reservation> reservations;
+	/*@OneToMany(mappedBy="restauration")
+    private Collection<Reservation> reservations;*/
 	public Long getIdRestauration() {
 		return idRestauration;
 	}
@@ -87,12 +87,12 @@ public class Restauration implements Serializable{
 	public void setNomPhoto(String nomPhoto) {
 		this.nomPhoto = nomPhoto;
 	}
-	public Collection<Reservation> getReservations() {
+	/*public Collection<Reservation> getReservations() {
 		return reservations;
 	}
 	public void setReservations(Collection<Reservation> reservations) {
 		this.reservations = reservations;
-	}
+	}*/
 	public Restauration() {
 		super();
 		// TODO Auto-generated constructor stub

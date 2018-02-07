@@ -1,8 +1,7 @@
-
 				<div class="loginmodal-container">
 					<h1>Login to Your Account</h1><br>
 				  
-					<input type="text" name="user" placeholder="Username" [(ngModel)]="username">
+					<input type="text" name="user" placeholder="Username" [(ngModel)]="username" ng-required="true">
 					<input type="password" name="pass" placeholder="Password" [(ngModel)]="password">
 
 					<button  (click)="loginUser()"  class="btn btn-primary">se connecter</button>
@@ -16,4 +15,3 @@
 
 				  </div>
 				</div>
-		

@@ -9,11 +9,6 @@
 				    <input type="text"  class="form-control" [(ngModel)]="reservation.nomReservation" />
 				  </div>
 
-				   <div class="form-group">
-				    <label for="staticID" class="ccontrol-label"> Nom Hebergement :</label>
-				    <input type="text" class="form-control" [(ngModel)]="reservation.hebergement" />
-				  </div>
-
 
 				  <div class="form-group">
 				    <label for="staticID" class="control-label"> Nombre personne :</label>
@@ -31,7 +26,23 @@
 
 				  <div class="form-group">
 				    <label for="staticID" class="ccontrol-label"> Nom Hebergement :</label>
-				    <input type="text" class="form-control" readonly="readonly" [(ngModel)]="hebergement.nomHebergement" />
+				    <input type="text" class="form-control" readonly="readonly" [(ngModel)]="hebergement.typeHebergement" />
+				  </div>
+                   
+				   <div *ngIf="resOrNo" class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Type Restauration :</label>
+				    <input type="text" class="form-control" readonly="readonly" [(ngModel)]="restauration.typeRestauration" />
+				  </div>
+                  <div *ngIf="resOrNo" class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Type Repas:</label>
+				    <input type="text" class="form-control" readonly="readonly" [(ngModel)]="restauration.typeRepas" />
+				  </div>
+
+
+				  <div class="form-group">
+				    <label for="staticID" class="ccontrol-label">Periode :</label>
+				    {{semaine.dateDernierJour | date :  "dd.MM.y"  }} | 
+				     {{ semaine.datePremierJour | date :  "dd.MM.y"  }}
 				  </div>
 
 

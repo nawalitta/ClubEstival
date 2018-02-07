@@ -39,6 +39,12 @@ public class ReservationRestService {
 		
 	}
 	
+	@RequestMapping(value="/getHebergementbyReservation/{id}",method=RequestMethod.GET)
+	public Reservation getHebergementByReservation(@PathVariable Long id){
+		return reservationRepository.findOne(id);
+		
+	}
+	
 	@RequestMapping(value="/reservation/{id}",method=RequestMethod.PUT)
 	public Reservation editReservation(@PathVariable Long id,@RequestBody Reservation c){
 		c.setIdReservation(id);
@@ -67,6 +73,16 @@ public class ReservationRestService {
 		reservationRepository.delete(id);
 	    return true;
 		 
+	}
+	
+	@RequestMapping(value="/chercherReservationsParSemaine",method=RequestMethod.GET)
+	public Page<Reservation> chercherReservationParSemaine(
+			@RequestParam (name="id", defaultValue="1000")Long id,
+			@RequestParam (name="page", defaultValue="0") int page,
+			@RequestParam (name="size", defaultValue="5") int size
+			){
+		return  reservationRepository.chercherReservationParSemaine(id, new PageRequest(page, size));
+		
 	}
 	
 

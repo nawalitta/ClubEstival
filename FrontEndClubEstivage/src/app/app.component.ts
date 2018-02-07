@@ -17,17 +17,21 @@ export class AppComponent {
   constructor(private router:Router) { }
 
   logged:boolean = false;
-  isAdmin:boolean = false;
+  isAdmin:boolean ;
 
 
    ngOnInit() {
 
-if(sessionStorage.length!= 0) {
+if(sessionStorage.getItem("isAdmin") != null) {
 
+
+console.log("HELLOOOWWW") ;
 	this.logged = true ;
-  //this.isAdmin= sessionStorage.getItem("isAdmin");
-  //console.log(this.isAdmin) ;
+  this.isAdmin= sessionStorage.getItem("isAdmin");
+
+  console.log("hellow" + this.isAdmin) ;
 }
+
 
 
  

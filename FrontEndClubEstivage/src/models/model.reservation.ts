@@ -1,4 +1,8 @@
 import { Hebergement } from 'models/model.hebergement';
+import { Semaine } from 'models/model.semaine';
+import { Client } from 'models/model.client';
+import { Restauration } from 'models/model.restauration';
+
 
 export class Reservation{
 	
@@ -8,15 +12,17 @@ export class Reservation{
 	nomReservation:string="";
 	total:number;
 	typePaiement:string="";
-	idClient:number;
-    idHebergement:number;
-    idRestauration:number;
-    idSemaine:number;
+	client:Client;
+    restauration:Restauration;
+    semaine:Semaine;
     hebergement:Hebergement;
 	
 
 	constructor() { 
 		this.hebergement = new Hebergement();
+        this.semaine = new Semaine();
+        this.client= new Client();
+        this.restauration=new Restauration();
 
 				}
 

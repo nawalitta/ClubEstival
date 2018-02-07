@@ -24,6 +24,7 @@ export class ClientsService{
 
  }
 
+
  saveClient(client:Client){
  	return this.http.post("http://localhost:1994/clients",client)
   	.map(resp=> resp.json());
@@ -47,6 +48,18 @@ export class ClientsService{
   	.map(resp=> resp.json());
 
  }
+  getClientsByTypeRestauration(typeRestauration:string, page:number , size:number){
+ 	return this.http.get("http://localhost:1994/clientsbyRestauration?typeRestauration="+typeRestauration+"&size="+size+"&page="+page+"")
+  	.map(resp=> resp.json());
+
+ }
+
+ getClient(id:number){
+ 	return this.http.get("http://localhost:1994/clients/"+id)
+  	.map(resp=> resp.json());
+
+ }
+
 }    
 	
   

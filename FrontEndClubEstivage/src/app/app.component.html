@@ -9,18 +9,18 @@
 
 
 
-
-
-			<button routerLink="/clients" class="btn btn-primary"> Clients</button>
-
-            <button routerLink="/clients_inactif" class="btn btn-primary"> activer client </button>
-            <button routerLink="/new-client" class="btn btn-primary">Nouveau Client</button>
-
-            <button routerLink="/reservations" class="btn btn-primary">Réservations  </button>
-            <button routerLink="/hebergements" class="btn btn-primary">Hebergements  </button>
-
+           <div *ngIf="isAdmin" >
+            <button routerLink="/profil_admin" class="btn btn-primary">Mon compte  </button>
             <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
-            
+           </div>
+
+
+           <div *ngIf="!isAdmin" >
+
+            <button routerLink="/profil" class="btn btn-primary">Mon compte  </button>
+            <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
+            </div>
+
 
 
     </div> 

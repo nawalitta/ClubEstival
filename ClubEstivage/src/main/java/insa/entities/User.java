@@ -24,7 +24,7 @@ public class User implements Serializable {
 	private String username;
 	private String password;
 	private boolean actived;
-	private boolean role;
+	private int role;
 	
 	public Client getFicheClient() {
 		return ficheClient;
@@ -44,16 +44,18 @@ public class User implements Serializable {
 	// on n'a pas d�clar� d'objet user dans la classe "Role"
 	
 
-	public boolean isRole() {
-		return role;
-	}
 
-	public void setRole(boolean role) {
-		this.role = role;
-	}
 
 	public Long getIdUser() {
 		return idUser;
+	}
+
+	public int getRole() {
+		return role;
+	}
+
+	public void setRole(int role) {
+		this.role = role;
 	}
 
 	public void setIdUser(Long idUser) {
@@ -92,7 +94,7 @@ public class User implements Serializable {
 
 	public User(String username, String password, boolean actived) {
 		super();
-		this.role=false ; 
+		this.role=0 ; 
 		this.username = username;
 		this.password = password;
 		this.actived = actived;

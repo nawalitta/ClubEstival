@@ -4,11 +4,6 @@ import { ConnexionService } from 'services/connexion.service';
 import {UtilityService} from "services/utility.service";
 import {AppComponent} from "app/app.component";
 
-//import { User } from 'models/model.user';
-
-//import {AuthService} from "services/auth.service";
-//import {UtilityService} from "services/utility.service";
-
 
 @Component({
   selector: 'app-connexion',
@@ -28,14 +23,18 @@ export class ConnexionComponent implements OnInit {
 
   ngOnInit() {
 
-     this.utility.isLogged().then((result: boolean) => {
+   /*  this.utility.isLogged().then((result: boolean) => {
             if(result) {
               
+                  if(sessionStorage.getItem("isAdmin")){
 
+                     this.router.navigate(['profil_admin']);
+                  }
+                  else{
                   this.router.navigate(['profil']);
                 }
             
-        })
+        })*/
   }
 
 
@@ -66,8 +65,17 @@ if(typeof (Storage) !== 'undefined') {
           console.log("admin ??  " + sessionStorage.getItem("isAdmin"));
 
                               this.appComponent.ngOnInit();
+                                if(sessionStorage.getItem("isAdmin")==0){
+                  this.router.navigate(['profil']);
+                }
+              
+              else if(sessionStorage.getItem("isAdmin")==1){
 
-                                    this.router.navigate(['profil'] ) ; 
+                     this.router.navigate(['profil_admin']);
+                  }
+                
+
+                                   // this.router.navigate(['profil'] ) ; 
 
               
 

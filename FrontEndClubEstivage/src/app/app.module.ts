@@ -13,6 +13,8 @@ import { UserService } from 'services/user.service';
 
 import { ConnexionComponent } from './connexion/connexion.component';
 import { ConnexionService } from 'services/connexion.service';
+
+import { RestaurationService } from 'services/restauration.service';
 import {UtilityService} from "services/utility.service";
 
 
@@ -41,27 +43,34 @@ import { ActivateClientComponent } from './activate-client/activate-client.compo
 import { ProfilAdminComponent } from './profil-admin/profil-admin.component';
 
 
+import { ListHebergementComponent } from './list-hebergement/list-hebergement.component';
+import { ListRestaurationComponent } from './list-restauration/list-restauration.component';
+import { EditHebergementComponent } from './edit-hebergement/edit-hebergement.component';
+
+
 const appRoutes: Routes = [
-  { path: 'clients', component: ClientsComponent },
-  { path: 'new-client', component: NewClientComponent },
-  { path: 'reservations', component: ReservationsComponent },
-  { path: 'new-reservation/:id', component: NewReservationComponent },
-  { path: 'hebergements', component: HebergementsComponent },
-  { path: 'new-hebergement', component: NewHebergementsComponent },
-  { path: 'edit-reservation/:id', component: EditReservationComponent},
-  { path: 'delete-reservation/:id', component: DeleteReservationComponent },
-  { path: 'connexion', component: ConnexionComponent },
-  { path: 'profil', component: ProfilComponent },
-  { path: 'inscription', component: InscriptionComponent },
+	{ path: 'clients', component: ClientsComponent },
+	{ path: 'new-client', component: NewClientComponent },
+	{ path: 'reservations', component: ReservationsComponent },
+	{ path: 'new-reservation', component: NewReservationComponent },
+	{ path: 'hebergements', component: HebergementsComponent },
+	{ path: 'new-hebergement', component: NewHebergementsComponent },
+	{ path: 'edit-reservation/:id', component: EditReservationComponent},
+	{ path: 'edit-hebergement/:id', component: EditHebergementComponent},
+	{ path: 'delete-reservation/:id', component: DeleteReservationComponent },
+	{ path: 'connexion', component: ConnexionComponent },
+  	{ path: 'profil', component: ProfilComponent },
+  	{ path: 'inscription', component: InscriptionComponent },
+  	{ path: 'restaurations', component: RestaurationsComponent },
+    { path: 'list-hebergement/:id', component: ListHebergementComponent },
+    { path: 'profil_admin', component: ProfilAdminComponent },
   { path: 'clients_inactif', component: ActivateClientComponent },
-  { path: 'profil_admin', component: ProfilAdminComponent },
-
-
-  { path: '',
-    redirectTo: '/connexion',
-    pathMatch: 'full'
+    { path: 'list-restauration/:id', component: ListRestaurationComponent},
+	{ path: '',
+	  redirectTo: '/connexion',
+	  pathMatch: 'full'
     }
-  
+	
 
 ]
 
@@ -82,13 +91,19 @@ const appRoutes: Routes = [
     ConnexionComponent,
     ProfilComponent,
     InscriptionComponent,
+
     ActivateClientComponent,
-    ProfilAdminComponent
+    ProfilAdminComponent,
+
+    ListHebergementComponent,
+    ListRestaurationComponent,
+    EditHebergementComponent
   ],
   imports: [
-    /*PdfmakeModule ,*/BrowserModule,  RouterModule.forRoot(appRoutes), HttpModule,FormsModule 
+    BrowserModule,  RouterModule.forRoot(appRoutes), HttpModule,FormsModule 
   ],
-  providers: [ClientsService,MailService, ReservationsService, PdfmakeService ,HebergementsService,ProfilService,ConnexionService,UserService,UtilityService],
+  providers: [ClientsService,MailService, ReservationsService, PdfmakeService ,RestaurationService, HebergementsService,ProfilService,ConnexionService,UserService,UtilityService],
+  
   bootstrap: [AppComponent]
 })
 export class AppModule { }

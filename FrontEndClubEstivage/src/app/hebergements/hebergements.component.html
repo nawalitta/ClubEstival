@@ -20,17 +20,19 @@
 					<th>Tarif  </th>
 					<th>Emplacement </th>
 					<th>Disponibilite  </th>
-					<th>---------------</th>
+					<th>----------------</th>
+
 				</tr>
 				<tr *ngFor="let c of pageClients?.content">
-					<td>{{c.idHebergement}}</td>
+					<td><a (click)="gotoPageHbergement(c.idHebergement)" class="clickable" >{{c.idHebergement}}</a></td>
 					<td>{{c.nomHebergement}}</td>
 					<td>{{c.typeHebergement}}</td>
 					<td>{{c.description}}</td>
 					<td>{{c.tarifHebergement}}</td>
 					<td>{{c.emplacement}}</td>
 					<td>{{c.disponibilite}}</td>
-					<td><button class="btn btn-primary" routerLink="/new-reservation/{{c.idHebergement}}" >Réserver</button></td>
+					<td><button class="btn btn-primary" (click)="modifierHebergement(c.idHebergement)">Modifier</button> <button class="btn btn-primary"  (click)="supprimerHebergement(c)" >Annuler</button></td>
+
 				</tr>
 			</table>
 			<div class="container">

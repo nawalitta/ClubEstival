@@ -25,10 +25,6 @@ this.utility.isLogged().then((result: boolean) => {
             
         })
 
-
-
-  
-
   	this.clientService.getClientsNonValide()
 		.subscribe(data=>{
 			this.clientInactif=data;

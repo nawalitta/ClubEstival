@@ -38,6 +38,17 @@
 
 
 		</div>
+		<div class="container">
+				<ul class="nav nav-pills">
+					<li  [ngClass]="{'active' :currentPage ==(i)}"  *ngFor = "let p of pages; let i=index" >
+
+						<a (click)="gotoPage(i)" class="clickable" >{{i}}</a>
+
+				    </li>
+
+				</ul>
+
+			</div>
 
 	</div>
 

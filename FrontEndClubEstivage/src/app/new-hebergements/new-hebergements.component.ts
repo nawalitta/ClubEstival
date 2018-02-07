@@ -3,6 +3,7 @@ import { Http } from '@angular/http';
 import "rxjs/add/operator/map";
 import { HebergementsService } from 'services/hebergements.service';
 import { Hebergement } from 'models/model.hebergement';
+import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 
 @Component({
   selector: 'app-new-hebergements',
@@ -15,7 +16,7 @@ export class NewHebergementsComponent implements OnInit {
   mode:number=1; 
 
 
-  constructor(public hebergementsservice: HebergementsService) { }
+  constructor(public hebergementsservice: HebergementsService,  private router: Router) { }
 
   ngOnInit() {
   }
@@ -25,6 +26,8 @@ export class NewHebergementsComponent implements OnInit {
   	this.hebergementsservice.saveHebergement(this.hebergement)
   		.subscribe(data=>{
 			console.log(data);
+			this.router.navigate(['hebergements']);
+
 		},err=> {
 		     console.log(err);
 		});

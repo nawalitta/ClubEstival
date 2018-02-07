@@ -17,7 +17,7 @@ export class ReservationsService{
  }
 
  saveReservation(reservation:Reservation){
- 	return this.http.post("http://localhost:1994/reservations",reservation)
+ 	return this.http.post("http://localhost:1994/reservations",reservation,)
   	.map(resp=> resp.json());
 
  }
@@ -42,6 +42,14 @@ getAllReservation(){
 		return this.http.get("http://localhost:1994/reservations")
   	.map(resp=> resp.json());
 }
+
+
+
+getReservationBySemaineId(id :number, page:number , size:number){
+ 	return this.http.get("http://localhost:1994/chercherReservationsParSemaine?&id="+id+"&size="+size+"&page="+page+"")
+  	.map(resp=> resp.json());
+
+ }
 
 }
 	

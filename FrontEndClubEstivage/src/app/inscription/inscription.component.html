@@ -1,65 +1,48 @@
-<form style="margin-left:40px;" class="form-horizontal" action='' method="POST">
-  <fieldset>
-    <div id="legend">
-      <legend class="">Register</legend>
-    </div>
-    <div class="control-group">
-      <!-- Username -->
-      <label class="control-label"  for="username">Username</label>
-      <div class="controls">
-        <input type="text" id="username" name="username" placeholder="" [(ngModel)]="user.username" class=" input-xlarge">
-        <p class="help-block">Username can contain any letters or numbers, without spaces</p>
-      </div>
-    </div>
- 
-    
- 
-    <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="password">Password</label>
-      <div class="controls">
-        <input type="password" id="password" [(ngModel)]="user.password"  class="input-xlarge">
-        <p class="help-block">Password should be at least 4 characters</p>
-      </div>
-    </div>
- 
-     <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="nom">Nom</label>
-      <div class="controls">
-        <input id="nom" [(ngModel)]="user.ficheClient.nomClient"  placeholder="" class="input-xlarge">
-      </div>
-    </div>
- 
-     <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="email">Email</label>
-      <div class="controls">
-        <input  id="email" [(ngModel)]="user.ficheClient.email"   class="input-xlarge">
-      </div>
-    </div>
- <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="tel">Tel</label>
-      <div class="controls">
-        <input  id="tel" [(ngModel)]="user.ficheClient.tel"   class="input-xlarge">
-      </div>
-    </div>
-    <div class="control-group">
-      <!-- Password-->
-      <label class="control-label" for="adresse">Adresse</label>
-      <div class="controls">
-        <input  id="adresse" [(ngModel)]="user.ficheClient.adresse"   class="input-xlarge">
-      </div>
-    </div>
-   
- 
-    <div class="control-group">
-      <!-- Button -->
-      <div class="controls">
-        <button class="btn btn-success" (click)="ajouterUser()" >Register</button>         <button class="btn btn-success" (click)="login()" >login</button>
+<div class="container spacer">
+  <div class="panel panel-primary">
+    <div class="panel-heading"> Nouveau Réservation</div>
+      <div class="panel-body">
 
-      </div>
+
+
+
+          <div class="form-group">
+            <label for="staticID" class="control-label"> nawal :</label>
+            <input type="text"  id="username"  name="username" [(ngModel)]="username" class="form-control" required />
+          </div>
+
+
+          <div class="form-group">
+            <label for="staticID" class="control-label"> Password :</label>
+             <input type="text" required="required" class="form-control" [(ngModel)]="password" />
+          </div>
+
+          <div class="form-group">
+            <label for="staticID" class="ccontrol-label"> Nom :</label>
+            <input type="email" required="required" class="form-control" id="staticEmail" [(ngModel)]="nomClient" />
+          </div>
+          <div class="form-group">
+            <label for="staticID"   class="ccontrol-label"> Adresse :</label>
+            <input type="text" required  class="form-control" [(ngModel)]="adresse" />
+          </div>
+
+          <div class="form-group">
+            <label for="staticID"   class="ccontrol-label"> email :</label>
+            <input type="text" required="required" class="form-control" [(ngModel)]="email" />
+          </div>
+                   
+           <div  class="form-group">
+            <label for="staticID"  class="ccontrol-label"> Tel :</label>
+            <input type="text" required data-fv-numeric="true" data-fv-numeric-message="Please enter valid phone numbers" class="form-control"  [(ngModel)]="tel" />
+          </div>
+                
+
+
+
+      <button class="btn btn-success" (click)="ajouterUser()" >Register</button>  <button class="btn btn-success" (click)="login()" >login</button>
+
     </div>
-  </fieldset>
-</form>
+
+  </div>
+
+</div>
