@@ -38,8 +38,9 @@ export class ClientsComponent implements OnInit {
         })
 
       this.clientsservice.getClients(this.motCle, this.currentPage, this.size)
-		.subscribe(data=>{
-			this.pageClients=data;
+		     .subscribe(data=>{
+			      this.pageClients=data;
+               this.pages=new Array(data.totalPages);
 
 		},err=> {
 		     console.log(err);
@@ -53,6 +54,7 @@ export class ClientsComponent implements OnInit {
   	this.clientsservice.getClients(this.motCle, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
+      this.pages=new Array(data.totalPages);
 
 		},err=> {
 		     console.log(err);

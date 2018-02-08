@@ -11,6 +11,7 @@ export class ProfilAdminComponent implements OnInit {
   constructor() { }
 
   ngOnInit() {
+  	
   }
 
 

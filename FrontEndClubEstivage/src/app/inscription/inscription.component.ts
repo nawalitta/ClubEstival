@@ -35,7 +35,7 @@ export class InscriptionComponent implements OnInit {
 
  
 let ficheclient: Client = {
-            nomClinet: this.username,
+            nomClient: this.nomClient,
             adresse: this.password , 
             email: this.email , 
             tel: this.tel 

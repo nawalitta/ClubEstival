@@ -62,51 +62,7 @@ this.profilservice.GetInfoUser()
 
 
 
-/*public download() {
 
-
-const  pdf = new jsPDF() ; 
-var img = new Image;
-
-
-console.log(this.user.nomClient);
-
-
-    pdf.text("Nom :" , 50,80 ) ;
-    pdf.text( this.user.nomClient,100,80) ; 
-    pdf.text("Adresse :",50,100 ) ;
-    pdf.text( this.user.adresse,100,100) ; 
-    //pdf.text( this.user.mail,60,100) ; 
-    pdf.text("Tel :",50;120 ) ;
-
-    pdf.text( this.user.tel,100,120) ; 
-
-    //pdf.save("test.pdf");
-img.onload = function() {
-    pdf.addImage(this,80,10,50, 50);
-    pdf.save("test.pdf");
-
-};
-img.crossOrigin = "";  
-img.src = "../assets/club.JPG";  
-
-
-} */ 
-
-public download() {
-
-  this.mailService.sendMail().
-  subscribe(data=>{
-      this.mail=data;
-      console.log(this.mail) ; 
-    
-    },err=> {
-         console.log(err);
-    });
-
-
-
-}
 
 
 /*public download() {

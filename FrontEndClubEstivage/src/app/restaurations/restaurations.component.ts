@@ -23,10 +23,16 @@ export class RestaurationsComponent implements OnInit {
   pages:Array<number>;
   semaineDisponbilite:any;
   hebergementSelectionne:Hebergement;
+  mode:number=2;
 
   constructor(public http:Http, public restaurationsservice: RestaurationService, private router: Router ) { }
   ngOnInit() {
   	this.doSearch();
+    if(sessionStorage.getItem('isAdmin')=="1"){
+          this.mode=1;
+           }else{
+            this.mode=2;
+           }
   	
   }
   
@@ -36,6 +42,7 @@ export class RestaurationsComponent implements OnInit {
   	this.restaurationsservice.getRestaurations(this.motCle, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
+       this.pages=new Array(data.totalPages);
  
 		},err=> {
 		     console.log(err);

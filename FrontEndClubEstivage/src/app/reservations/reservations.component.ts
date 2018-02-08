@@ -27,14 +27,14 @@ export class ReservationsComponent implements OnInit {
   ngOnInit() {
 
 this.utility.isLogged().then((result: boolean) => {
+
+              this.doSearch();
           if(!result) {
                            this.router.navigate(['connexion']);
 
             }
         })
 
-
-  	this.doSearch();
   }
 
 
@@ -59,7 +59,8 @@ this.utility.isLogged().then((result: boolean) => {
   	this.reservationsservice.getReservations(this.motCle, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
-			this.pages=new Array(data.totalPages);
+       this.pages=new Array(data.totalPages);
+       console.log(data);
 		},err=> {
 		     console.log(err);
 		});
@@ -72,9 +73,12 @@ this.utility.isLogged().then((result: boolean) => {
   	this.doSearch();
 
   }
+
   modifierReservation(id:number){
   	this.router.navigate(['edit-reservation',id]);
   }
+
+
   supprimerReservation(res:Reservation){
   	let confirme=window.confirm('Est vous sure ?');
   	if(confirme==true){

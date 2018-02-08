@@ -9,6 +9,8 @@ import { Hebergement } from 'models/model.hebergement';
 import { Restauration } from 'models/model.restauration';
 import {Semaine} from 'models/model.semaine';
 import {Client} from 'models/model.client';
+import { MailService } from 'services/mail.service';
+
 import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import { ClientsService } from 'services/clients.service';
 import 'rxjs/add/operator/switchMap';
@@ -34,6 +36,7 @@ export class NewReservationComponent implements OnInit {
   constructor(public reservationsservice: ReservationsService,
               public hebergementsservice: HebergementsService,
               public restaurationservice: RestaurationService,
+              private mailService : MailService,
               private route: ActivatedRoute,
               private  clientsservice:ClientsService,
               private router: Router
@@ -45,6 +48,14 @@ export class NewReservationComponent implements OnInit {
   		 let id =sessionStorage.getItem('hebergement');
          let idSemaine = sessionStorage.getItem('semaine');
          let idRestauration = sessionStorage.getItem('restauration');
+         this.hebergementsservice.getHebergementById(id)
+		.subscribe(data=>{
+			this.hebergement=data;
+			console.log("mm");
+			console.log(this.hebergement);
+		},err=> {
+		     console.log(err);
+		});	
 
          if(idRestauration != null){
          this.resOrNo = true;
@@ -59,14 +70,7 @@ export class NewReservationComponent implements OnInit {
 	}
 
         
-         this.hebergementsservice.getHebergementById(id)
-		.subscribe(data=>{
-			this.hebergement=data;
-			console.log("mm");
-			console.log(this.hebergement);
-		},err=> {
-		     console.log(err);
-		});	
+         
 
 
 		 this.hebergementsservice.getSemaine(idSemaine)
@@ -80,7 +84,7 @@ export class NewReservationComponent implements OnInit {
         
 
 
-		this.clientsservice.getClient(sessionStorage.getItem('currId'))
+		this.clientsservice.getClient(sessionStorage.getItem('clientId'))
         .subscribe(data=>{
 			this.client =data;
 			console.log("mm");
@@ -92,6 +96,21 @@ export class NewReservationComponent implements OnInit {
 
   }
 
+
+public sender() {
+
+  this.mailService.sendMail(this.client.email).
+  subscribe(data=>{
+      //this.mail=data;
+      console.log(data) ; 
+    
+    },err=> {
+         console.log(err);
+    });
+
+
+
+}
  
   ajouterReservation(){
   	
@@ -118,12 +137,23 @@ export class NewReservationComponent implements OnInit {
 			sessionStorage.removeItem('hebergement');
 			sessionStorage.removeItem('semaine');
 			sessionStorage.removeItem('restauration');
-			this.router.navigate(['reservations']);
+			this.sender();
+			 if(sessionStorage.getItem('isAdmin')=="1"){
+          			this.router.navigate(['reservations']);
+           }else{
+            		this.router.navigate(['/list-reservation-client']);
+           }
+		
 
 		},err=> {
 		     console.log(err);
 		});
+
+
+
   }
+
+
 
 
 }

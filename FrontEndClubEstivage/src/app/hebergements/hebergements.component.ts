@@ -28,6 +28,7 @@ export class HebergementsComponent implements OnInit {
   pages:Array<number>;
   semaineDisponbilite:any;
   hebergementSelectionne:Hebergement;
+  mode:string=1;
 
   constructor(public http:Http, public hebergementsservice: HebergementsService ,private router: Router,  private utility:UtilityService) { }
 
@@ -41,7 +42,13 @@ this.utility.isLogged().then((result: boolean) => {
             }
 
             
-        })
+        });
+       if(sessionStorage.getItem('isAdmin')=="1"){
+          this.mode=1;
+           }else{
+            this.mode=2;
+           }
+
     this.doSearch();
 }
 
@@ -54,6 +61,7 @@ this.utility.isLogged().then((result: boolean) => {
   	this.hebergementsservice.getHebergements(this.motCle, this.currentPage, this.size)
 		.subscribe(data=>{
 			this.pageClients=data;
+      this.pages=new Array(data.totalPages);
  
 		},err=> {
 		     console.log(err);
@@ -72,6 +80,9 @@ this.utility.isLogged().then((result: boolean) => {
 
 
   chercherHebergement(){
+    
+    console.log(this.motCle);
+
 
   	this.doSearch();
 

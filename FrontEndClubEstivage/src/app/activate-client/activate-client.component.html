@@ -21,24 +21,20 @@
 
 					
 				</tr>
-				<tr *ngFor="let c of clientInactif">
+				<tr *ngFor="let c of clientInactif?.content">
 
 					<td>{{c.idUser}}</td>
 					<td>{{c.ficheClient.nomClient}}</td>
 					<td>{{c.ficheClient.email}}</td>
 					<td>{{c.ficheClient.adresse}}</td>
-					<td>{{c.ficheClient.tel}}</td>
+					<td>{{c.ficheClient.tel}}</td> 
 					<td><button (click)="activer(c)" type="button" class="btn btn-primary">Valider user</button></td>
 
 
-					
 				</tr>
 			</table>
 			
-
-
-		</div>
-		<div class="container">
+        <div class="container">
 				<ul class="nav nav-pills">
 					<li  [ngClass]="{'active' :currentPage ==(i)}"  *ngFor = "let p of pages; let i=index" >
 
@@ -49,6 +45,12 @@
 				</ul>
 
 			</div>
+
+
+		</div>
+	
+
+
 
 	</div>
 

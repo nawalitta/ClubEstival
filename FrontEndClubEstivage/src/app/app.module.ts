@@ -41,8 +41,6 @@ import { ProfilComponent } from './profil/profil.component';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { ActivateClientComponent } from './activate-client/activate-client.component';
 import { ProfilAdminComponent } from './profil-admin/profil-admin.component';
-
-
 import { ListHebergementComponent } from './list-hebergement/list-hebergement.component';
 import { ListRestaurationComponent } from './list-restauration/list-restauration.component';
 import { EditHebergementComponent } from './edit-hebergement/edit-hebergement.component';
@@ -64,14 +62,14 @@ const appRoutes: Routes = [
 	{ path: 'delete-reservation/:id', component: DeleteReservationComponent },
 	{ path: 'edit-restauration/:id', component: EditRestaurationComponent},
 	{ path: 'connexion', component: ConnexionComponent },
-  	{ path: 'profil', component: ProfilComponent },
-  	{ path: 'inscription', component: InscriptionComponent },
-  	{ path: 'restaurations', component: RestaurationsComponent },
-    { path: 'list-hebergement/:id', component: ListHebergementComponent },
-    { path: 'profil_admin', component: ProfilAdminComponent },
+  { path: 'profil', component: ProfilComponent },
+  { path: 'inscription', component: InscriptionComponent },
+  { path: 'restaurations', component: RestaurationsComponent },
+  { path: 'list-hebergement/:id', component: ListHebergementComponent },
+  { path: 'profil_admin', component: ProfilAdminComponent },
   { path: 'clients_inactif', component: ActivateClientComponent },
-    { path: 'list-restauration/:id', component: ListRestaurationComponent},
-    { path: 'list-reservation-client', component: ListReservationClientComponent},
+  { path: 'list-restauration/:id', component: ListRestaurationComponent},
+  { path: 'list-reservation-client', component: ListReservationClientComponent},
 	{ path: '',
 	  redirectTo: '/connexion',
 	  pathMatch: 'full'
@@ -105,7 +103,6 @@ const appRoutes: Routes = [
     ListRestaurationComponent,
     EditHebergementComponent,
     EditRestaurationComponent,
-    ListRestaurationClientComponent,
     ListReservationClientComponent
     
   ],

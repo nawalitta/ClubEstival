@@ -67,18 +67,26 @@
 	<div class="panel panel-primary">
 		<div class="panel-heading"> Reservation {{reservationSelectionne.nomReservation}} </div>
 		<div class="panel-body">
+
 			  
 			<ul>
 				<li>ID : {{reservationSelectionne.idReservation}}</li>
 				<li>NOM : {{reservationSelectionne.nomReservation}}</li>
+				<li>NOM Hebergement: {{reservationSelectionne.hebergement.nomHebergement}}</li>
 				<li>nombre de personne : {{reservtaionSelectionne.nbrPersonne}}</li>
-				<li>Total : {{reservtaionSelectionne.total}}</li>
+				<li>NOM : {{reservationSelectionne.nbrPersonne}}</li>
+				<li>Total : {{reservationSelectionne.total}}</li>
 				<li>Type paiement : {{reservationSelectionne.typePaiement}}</li>
 				<li>Date premier jour : {{reservationSelectionne.semaine.dateDernierJour | date : "fullDate" }}</li>
 				<li>Date dernier jour : {{reservationSelectionne.semaine.datePremierJour | date : "fullDate" }}</li>
 			</ul>
 
 		
+<div  style ="float:right" class="panel-body">
+
+
+		<button (click)="download()" class="btn btn-success">Download Réservation</button>
+	</div>
 
 		
 
@@ -86,7 +94,7 @@
 			
 
 		</div>
-
+				
 	</div>
 
 

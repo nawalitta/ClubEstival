@@ -18,7 +18,7 @@
 					<th>Type </th>
 					<th>Type Repas  </th>
 					<th>Description </th>
-					<th>---------------</th>
+					<th *ngIf="mode==1">---------------</th>
 				</tr>
 				<tr *ngFor="let c of pageClients?.content">
 					<td><a (click)="gotoPageRestauration(c.idRestauration)" class="clickable" >{{c.idRestauration}}</a></td>
@@ -26,7 +26,7 @@
 					<td>{{c.typeRestauration}}</td>
 					<td>{{c.typeRepas}}</td>
 					<td>{{c.description}}</td>
-					<td><button class="btn btn-primary" (click)="modifierRestauration(c.idRestauration)">Modifier</button> <button class="btn btn-primary"  (click)="supprimerRestauration(c)" >Annuler</button></td>
+					<td *ngIf="mode==1"><button class="btn btn-primary" (click)="modifierRestauration(c.idRestauration)">Modifier</button> <button class="btn btn-primary"  (click)="supprimerRestauration(c)" >Annuler</button></td>
 
 				</tr>
 			</table>

@@ -1,15 +1,77 @@
+<div id="fh5co-wrapper">
+    <div id="fh5co-page">
+    <div id="fh5co-header">
+      <header id="fh5co-header-section">
+        <div class="container">
+          <div class="nav-header">
+            <a href="#" class="js-fh5co-nav-toggle fh5co-nav-toggle"><i></i></a>
+            <h1 id="fh5co-logo"><a href="index.html">{{user.nomClient}}</a></h1>
+            <!-- START #fh5co-menu-wrap -->
+            <nav id="fh5co-menu-wrap" role="navigation">
+              <ul class="sf-menu" id="fh5co-primary-menu">
+              <!--  <li>
+                  <a class="active" href="index.html">Home</a>
+                </li> -->
+                <li><a routerLink="/list-reservation-client" >Mes Réservations </a></li>
+                <li><a routerLink="/hebergements"  >Hebergements</a></li>
+                
+
+              </ul>
+            </nav>
+
+
+          </div>
+        </div>
+      </header>  
+ 
+    </div>
+
+
+
+       <router-outlet>  </router-outlet> 
+
+ 
 
 
 
 
 <div class="container spacer">
 	<div class="panel panel-primary">
-		<div class="panel-heading"> Profil Client  </div>
+		<div class="panel-heading"> Profil   </div>
 		<div class="panel-body">
 			  
-			
+			<div style="margin-top: 35px;">
+  
+      <table class="table" align="center">
 
-		<button routerLink="#" class="btn btn-primary"> Mes  Réservations  </button>
+        <thead>
+
+          <tr>
+
+            <th>Nom</th>
+            <th>adresse</th>
+            <th>Mail </th>
+            <th>Tel</th>
+            
+          </tr>
+
+        </thead>
+
+
+          <tr>
+
+              <td class="info"> {{user.nomClient}}</td>
+            <td class="info">{{user.adresse}}</td>
+            <td class="info">{{user.email}}</td>
+            <td class="info">{{user.tel}}</td>
+
+            
+          
+          </tr>
+      </table>
+                 
+
+</div>
 
 
 		</div>
@@ -20,49 +82,3 @@
 
 </div>
 
-
-
-<div class="container">
-	<div class="row">
-		<div class="col-md-6 col-md-offset-3">
-			<div class="portfolios">
-				<div class="text-center">
-					   <h2>Mon Compte</h2>
-				</div>
-				<hr>
-			</div>
-		</div>
-	</div>
-</div>
-<div style="margin-top: 35px;">
-	
-			<table class="table" align="center">
-
-				<thead>
-
-					<tr>
-
-						<th>Nom</th>
-						<th>adresse</th>
-						<th>Mail </th>
-						<th>Tel</th>
-						
-					</tr>
-
-				</thead>
-
-
-					<tr>
-
-					    <td class="info"> {{user.nomClient}}</td>
-						<td class="info">{{user.adresse}}</td>
-						<td class="info">{{user.email}}</td>
-						<td class="info">{{user.tel}</td>
-
-						
-					
-					</tr>
-			</table>
-		             <button (click)="download()" class="btn btn-success">Download PDF</button>
-
-</div>

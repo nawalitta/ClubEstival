@@ -12,29 +12,44 @@ export class ActivateClientComponent implements OnInit {
 
   constructor( public clientService : ClientsService ,private router: Router,private utility:UtilityService ,private route: ActivatedRoute,) { }
   clientInactif: any;
-
+  currentPage:number=0;
+  size:number=5;
+  pages:Array<number>;
   ngOnInit() {
 
  
-this.utility.isLogged().then((result: boolean) => {
+    this.utility.isLogged().then((result: boolean) => {
             if(!result) {
                            this.router.navigate(['connexion']);
 
             }
 
             
-        })
+        });
 
-  	this.clientService.getClientsNonValide()
-		.subscribe(data=>{
-			this.clientInactif=data;
-			console.log(this.clientInactif);
 
-		},err=> {
-		     console.log(err);
-		});
-  }
+    this.doSearch() ;
 
+
+}
+
+
+
+doSearch(){
+
+
+    this.clientService.getClientsNonValide()
+    .subscribe(data=>{
+      this.clientInactif=data;
+      this.pages=new Array(data.totalPages);
+
+      console.log(this.clientInactif);
+
+    },err=> {
+         console.log(err);
+    });
+  
+}
 
 
 
@@ -54,15 +69,16 @@ activer(c: any){
         console.log(err);
            alert("Problème !! ");
       });
-  		
-
-
-
-
-
+  
 }
 
 
+
+gotoPage(i:number){
+    this.currentPage=i;
+    this.doSearch();
+
+  }
 
 
 

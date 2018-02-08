@@ -15,14 +15,22 @@
 				     <input type="text" class="form-control" [(ngModel)]="reservation.nbrPersonne" />
 				  </div>
 
-				  <div class="form-group">
+				  <div *ngIf="resOrNo" class="form-group">
 				    <label for="staticID" class="ccontrol-label"> Total :</label>
-				    <input type="email" class="form-control" id="staticEmail" [(ngModel)]="reservation.total" />
+				    <input type="email" class="form-control"  readonly="readonly" id="staticEmail" [(ngModel)]="hebergement.tarifHebergement+restauration.tarifRestauration" />
 				  </div>
-				  <div class="form-group">
-				    <label for="staticID" class="ccontrol-label"> Type Paiement :</label>
-				    <input type="text" class="form-control" [(ngModel)]="reservation.typePaiement" />
+				  <div *ngIf="!resOrNo" class="form-group">
+				    <label for="staticID" class="ccontrol-label"> Total :</label>
+				    <input type="email" class="form-control"  readonly="readonly" id="staticEmail" [(ngModel)]="hebergement.tarifHebergement" />
 				  </div>
+				 <div class="form-group">
+				   	<label for="staticID" class="ccontrol-label"> Type de paiement :</label>
+					  <select [(ngModel)]="reservation.typePaiement"  class="form-control" required>
+						  <option value="carte banacaire " selected>Carte Bancaire</option>
+						  <option value="Paiement ne ligne">Paiement ne ligne </option>
+						  <option value="Espèce"> Espèce</option>
+						</select>
+				    </div>
 
 				  <div class="form-group">
 				    <label for="staticID" class="ccontrol-label"> Nom Hebergement :</label>

@@ -8,7 +8,7 @@ import {AppComponent} from "app/app.component";
 @Component({
   selector: 'app-connexion',
   templateUrl: './connexion.component.html',
-  styleUrls: ['./connexion.component.css']
+  styleUrls: ['./connexion.component.css',]
 })
 
 
@@ -23,10 +23,10 @@ export class ConnexionComponent implements OnInit {
 
   ngOnInit() {
 
-   /*  this.utility.isLogged().then((result: boolean) => {
+    this.utility.isLogged().then((result: boolean) => {
             if(result) {
               
-                  if(sessionStorage.getItem("isAdmin")){
+                  if(sessionStorage.getItem("isAdmin")==1){
 
                      this.router.navigate(['profil_admin']);
                   }
@@ -34,7 +34,7 @@ export class ConnexionComponent implements OnInit {
                   this.router.navigate(['profil']);
                 }
             
-        })*/
+        })
   }
 
 
@@ -56,11 +56,10 @@ for (var i = 0; i < this.user.length; i++) {
   
 if(typeof (Storage) !== 'undefined') {
                     sessionStorage.setItem('currName',this.user[i].username);
-
                     sessionStorage.setItem('isAdmin',this.user[i].role);
-
-
                     sessionStorage.setItem('currId',this.user[i].idUser);
+                    sessionStorage.setItem('clientId',this.user[i].ficheClient.idClient);
+
 }
           console.log("admin ??  " + sessionStorage.getItem("isAdmin"));
 

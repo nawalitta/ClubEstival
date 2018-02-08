@@ -10,10 +10,17 @@
 				  </div>
 
 
-				  <div class="form-group">
-				    <label for="staticID" class="control-label"> Type :</label>
-				     <input type="text" class="form-control" [(ngModel)]="hebergement.typeHebergement" />
-				  </div>
+				 
+				   <div class="form-group">
+				   	<label for="staticID" class="ccontrol-label">  Type hebergement:</label>
+					  <select [(ngModel)]="hebergement.typeHebergement"  class="form-control" required>
+						  <option value="appartement" selected>appartement</option>
+						  <option value="bungalow">bungalows</option>
+						  <option value="caravanes"> caravanes</option>
+					  </select>
+				</div>
+
+
 
 				  <div class="form-group">
 				    <label for="staticID" class="ccontrol-label"> Description :</label>

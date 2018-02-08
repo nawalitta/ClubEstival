@@ -7,7 +7,10 @@ import { Router } from '@angular/router';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css','../energy/css/animate.css','../energy/css/icomoon.css',
+  '../energy/css/simple-line-icons.css','../energy/css/bootstrap.css',
+  '../energy/css/flexslider.css','../energy/css/bootstrap.css','../energy/css/superfish.css','../energy/css/style.css'
+  ]
 })
 
 
@@ -17,7 +20,7 @@ export class AppComponent {
   constructor(private router:Router) { }
 
   logged:boolean = false;
-  isAdmin:boolean ;
+  isAdmin:number ;
 
 
    ngOnInit() {

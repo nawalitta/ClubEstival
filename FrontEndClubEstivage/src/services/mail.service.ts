@@ -12,11 +12,11 @@ export class MailService{
  constructor(public http:Http) { }
 
 
-   sendMail(){
+   sendMail(mail:string){
  
  
 
- return this.http.get("http://localhost:1994/mail").map(resp=> resp.json()) ;
+ return this.http.get("http://localhost:1994/mail/"+mail).map(resp=> resp.json()) ;
     
 
 

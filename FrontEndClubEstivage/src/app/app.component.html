@@ -1,21 +1,21 @@
 
+
+
+
 <div   class="container spacer">
     
   
     <div *ngIf="logged" > 
 
 
-           <input type="text" name="user" placeholder="Username" [(ngModel)] ="logged" >
 
-
-
-           <div *ngIf="isAdmin" >
+           <div *ngIf="isAdmin==1" >
             <button routerLink="/profil_admin" class="btn btn-primary">Mon compte  </button>
             <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
            </div>
 
 
-           <div *ngIf="!isAdmin" >
+           <div *ngIf="isAdmin==0" >
             <button routerLink="/profil" class="btn btn-primary">Mon compte  </button>
 
             <button (click)="logout()" class="btn btn-danger">Déconnexion</button>
@@ -29,6 +29,7 @@
 
         
 </div> 
+
 
 
 <router-outlet>

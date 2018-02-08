@@ -4,7 +4,7 @@ import { Router, ActivatedRoute, ParamMap } from '@angular/router';
 import "rxjs/add/operator/map";
 import { HebergementsService } from 'services/hebergements.service';
 import { Hebergement } from 'models/model.hebergement';
-
+import {UtilityService} from "services/utility.service";
 
 
 @Component({
@@ -12,6 +12,7 @@ import { Hebergement } from 'models/model.hebergement';
   templateUrl: './list-hebergement.component.html',
   styleUrls: ['./list-hebergement.component.css']
 })
+
 export class ListHebergementComponent implements OnInit {
 
 
@@ -23,10 +24,25 @@ export class ListHebergementComponent implements OnInit {
 
   constructor(public http:Http,
   			 public hebergementsservice: HebergementsService,
+         private utility:UtilityService
   			 private router: Router,
   			 private route: ActivatedRoute ) { }
 
   ngOnInit() {
+
+
+
+
+
+this.utility.isLogged().then((result: boolean) => {
+            if(!result) {
+                           this.router.navigate(['connexion']);
+
+            }
+
+            
+        })
+
 
        	let idHebergement = this.route.snapshot.paramMap.get('id');
 
